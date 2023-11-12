@@ -1,6 +1,5 @@
 package christmas.domain;
 
-// dto
 public class OrderFood {
     private FoodName name;
     private Quantity count;
@@ -19,7 +18,6 @@ public class OrderFood {
     }
 
     private static void validate(FoodName name) {
-        // 메뉴판에 없는 경우
         try {
             Menu.valueOf(name.getName());
         } catch (IllegalArgumentException e) {
@@ -31,7 +29,7 @@ public class OrderFood {
         return Menu.valueOf(name.getName());
     }
 
-    public Quantity count() {
-        return count;
+    public int getQuantity() {
+        return count.getQuantity();
     }
 }

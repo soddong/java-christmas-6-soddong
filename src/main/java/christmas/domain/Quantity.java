@@ -13,28 +13,15 @@ public class Quantity {
     }
 
     private static void validate(String quantity) {
-        // 빈 경우
-        if (quantity.isBlank())
+        if (quantity == null || quantity.isBlank())
             throw new IllegalArgumentException();
 
-        // 숫자가 아닌 경우
-        int tmp;
-        try {
-            tmp = Integer.parseInt(quantity);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-
-        // 1~20 사이 range 체크
-        if (tmp < 1 || tmp > 20)
+        int value = Integer.parseInt(quantity);
+        if (value < 1)
             throw new IllegalArgumentException();
     }
 
-    public Quantity add(Quantity other) {
-        return new Quantity(this.quantity + other.quantity);
-    }
-
-    public boolean isOver(final int value) {
-        return this.quantity > value;
+    public int getQuantity() {
+        return quantity;
     }
 }
