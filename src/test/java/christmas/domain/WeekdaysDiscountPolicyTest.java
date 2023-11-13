@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 class WeekdaysDiscountPolicyTest {
-    DiscountPolicy discountPolicy;
+    DiscountPolicy discountPolicy = new WeekdaysDiscountPolicy();
 
     @Test
     public void 평일이고_디저트구매시_할인적용_() {
@@ -18,7 +18,6 @@ class WeekdaysDiscountPolicyTest {
         Order order1 = Order.of(FoodName.from("초코케이크"), Quantity.from("1"));
         // when
         orders.addOrder(order1);
-        discountPolicy = new WeekdaysDiscountPolicy();
         // when
         int discountedPrice = discountPolicy.calculateDiscountAmount(orders);
         // then
@@ -32,7 +31,6 @@ class WeekdaysDiscountPolicyTest {
         Order order1 = Order.of(FoodName.from("초코케이크"), Quantity.from("1"));
         // when
         orders.addOrder(order1);
-        discountPolicy = new WeekdaysDiscountPolicy();
         // when
         int discountedPrice = discountPolicy.calculateDiscountAmount(orders);
         // then
@@ -46,7 +44,6 @@ class WeekdaysDiscountPolicyTest {
         Order order1 = Order.of(FoodName.from("티본스테이크"), Quantity.from("1"));
         // when
         orders.addOrder(order1);
-        discountPolicy = new WeekdaysDiscountPolicy();
         // when
         int discountedPrice = discountPolicy.calculateDiscountAmount(orders);
         // then
@@ -63,7 +60,6 @@ class WeekdaysDiscountPolicyTest {
         // when
         orders.addOrder(order1);
         orders.addOrder(order2);
-        discountPolicy = new WeekdaysDiscountPolicy();
         // when
         int discountedPrice = discountPolicy.calculateDiscountAmount(orders);
         // then
