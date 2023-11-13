@@ -1,8 +1,7 @@
 package christmas.domain.discount;
 
-import christmas.domain.DayChecker;
+import christmas.domain.calendar.DayChecker;
 import christmas.domain.Orders;
-import christmas.domain.discount.DiscountPolicy;
 
 import java.time.LocalDate;
 

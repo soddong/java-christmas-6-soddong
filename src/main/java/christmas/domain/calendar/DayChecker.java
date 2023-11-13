@@ -1,12 +1,11 @@
-package christmas.domain;
+package christmas.domain.calendar;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.EnumSet;
+import java.util.WeakHashMap;
 
 public class DayChecker {
-    private static final EnumSet<DayOfWeek> weekDays = EnumSet.of
-            (DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY, DayOfWeek.SUNDAY);
     private LocalDate dateToCheck;
 
     public DayChecker(LocalDate dateToCheck) {
@@ -31,7 +30,16 @@ public class DayChecker {
      */
     public boolean isWeekDay() {
         DayOfWeek week = dateToCheck.getDayOfWeek();
-        return weekDays.contains(week);
+        return WeekDate.isWeekDate(week);
+    }
+
+    /**
+     * dateToCheck가 평일인지 확인합니다.
+     *
+     * @return dateToCheck가 평일이면 true, 아니면 false
+     */
+    public boolean isSpecialDay() {
+        return SpecialDate.isSpecialDay(dateToCheck);
     }
 
 }
