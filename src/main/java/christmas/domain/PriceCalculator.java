@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.domain.discount.DiscountPolicy;
+
 import java.util.List;
 
 public class PriceCalculator {

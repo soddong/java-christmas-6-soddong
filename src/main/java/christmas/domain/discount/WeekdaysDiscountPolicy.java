@@ -1,8 +1,13 @@
-package christmas.domain;
+package christmas.domain.discount;
+
+import christmas.domain.DayChecker;
+import christmas.domain.FoodCategory;
+import christmas.domain.Order;
+import christmas.domain.Orders;
 
 import java.time.LocalDate;
 
-public class WeekdaysDiscountPolicy implements DiscountPolicy{
+public class WeekdaysDiscountPolicy implements DiscountPolicy {
     private LocalDate start = LocalDate.of(2023, 12, 1);
     private LocalDate end = LocalDate.of(2023, 12, 31);
 

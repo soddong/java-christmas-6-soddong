@@ -1,12 +1,12 @@
 package christmas.domain;
 
+import christmas.domain.discount.DdayDiscountPolicy;
+import christmas.domain.discount.DiscountPolicy;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class DdayDiscountPolicyTest {
     Order order1;

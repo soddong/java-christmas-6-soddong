@@ -1,11 +1,11 @@
 package christmas.domain;
 
+import christmas.domain.discount.DiscountPolicy;
+import christmas.domain.discount.WeekendDiscountPolicy;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class WeekendDiscountPolicyTest {
     DiscountPolicy discountPolicy = new WeekendDiscountPolicy();

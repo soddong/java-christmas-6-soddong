@@ -1,4 +1,6 @@
-package christmas.domain;
+package christmas.domain.discount;
+
+import christmas.domain.Orders;
 
 import java.time.LocalDate;
 import java.util.Date;

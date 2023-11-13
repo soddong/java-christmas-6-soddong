@@ -1,7 +1,10 @@
-package christmas.domain;
+package christmas.domain.discount;
+
+import christmas.domain.DayChecker;
+import christmas.domain.Orders;
+import christmas.domain.discount.DiscountPolicy;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class DdayDiscountPolicy implements DiscountPolicy {
     private LocalDate start = LocalDate.of(2023, 12, 1);
