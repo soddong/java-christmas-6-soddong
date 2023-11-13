@@ -10,6 +10,11 @@ public class Orders {
     private List<Order> orders;
     private LocalDate date;
 
+    public Orders() {
+        this.orders = new ArrayList<>();
+        this.date = LocalDate.of(2023, 1, 8);
+    }
+
     public Orders(LocalDate date) {
         this.orders = new ArrayList<>();
         this.date = date;
