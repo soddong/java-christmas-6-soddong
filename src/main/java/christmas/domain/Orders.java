@@ -1,14 +1,18 @@
 package christmas.domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Orders {
-    private List<Order> orders;
     private static final int MAX_ORDER_SIZE = 20;
 
-    public Orders() {
+    private List<Order> orders;
+    private LocalDate date;
+
+    public Orders(LocalDate date) {
         this.orders = new ArrayList<>();
+        this.date = date;
     }
 
     public void addOrder(Order order) {
@@ -39,6 +43,10 @@ public class Orders {
 
     public List<Order> getOrders() {
         return new ArrayList<>(orders);
+    }
+
+    public LocalDate getDate() {
+        return date;
     }
 
     // TODO; INPUT 예외처리 ('-'없음, 빈값)
