@@ -1,10 +1,10 @@
 package christmas.domain;
 
-import christmas.domain.discount.DdayDiscountPolicy;
-import christmas.domain.discount.DiscountPolicy;
-import christmas.domain.discount.SpecialDiscountPolicy;
-import christmas.domain.discount.WeekdaysDiscountPolicy;
-import christmas.domain.discount.WeekendDiscountPolicy;
+import christmas.domain.promotion.discount.DdayDiscountPolicy;
+import christmas.domain.promotion.discount.DiscountPolicy;
+import christmas.domain.promotion.discount.SpecialDiscountPolicy;
+import christmas.domain.promotion.discount.WeekdaysDiscountPolicy;
+import christmas.domain.promotion.discount.WeekendDiscountPolicy;
 import christmas.domain.price.PriceCalculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,8 +13,6 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PriceCalculatorTest {
     List<DiscountPolicy> discountPolicies = new ArrayList<>();
@@ -32,7 +30,7 @@ class PriceCalculatorTest {
     void 디데이할인_평일할인() {
         // given
         Orders orders = new Orders(LocalDate.of(2023, 12, 4)); // 월 & 3일 경과
-        Order order = Order.of(FoodName.from("초코케이크"), Quantity.from("2"));
+        FoodItem order = FoodItem.createItem("초코케이크", "2");
         orders.addOrder(order);
 
         // when
@@ -46,7 +44,7 @@ class PriceCalculatorTest {
     void 스페셜할인_평일할인_디데이할인() {
         // given
         Orders orders = new Orders(LocalDate.of(2023, 12, 24)); // 월 & 23일 경과
-        Order order = Order.of(FoodName.from("초코케이크"), Quantity.from("2"));
+        FoodItem order = FoodItem.createItem("초코케이크", "2");
         orders.addOrder(order);
 
         // when
@@ -60,10 +58,10 @@ class PriceCalculatorTest {
     void 주말할인_디데이할인() {
         // given  199,000 - 6,500 -> 192,500
         Orders orders = new Orders(LocalDate.of(2023, 12, 16)); // 토 & 15일 경과
-        Order order1 = Order.of(FoodName.from("초코케이크"), Quantity.from("2"));
-        Order order2 = Order.of(FoodName.from("타파스"), Quantity.from("2"));
-        Order order3 = Order.of(FoodName.from("바비큐립"), Quantity.from("2"));
-        Order order4 = Order.of(FoodName.from("샴페인"), Quantity.from("2"));
+        FoodItem order1 = FoodItem.createItem("초코케이크", "2");
+        FoodItem order2 = FoodItem.createItem("타파스", "2");
+        FoodItem order3 = FoodItem.createItem("바비큐립", "2");
+        FoodItem order4 = FoodItem.createItem("샴페인", "2");
         orders.addOrder(order1);
         orders.addOrder(order2);
         orders.addOrder(order3);
@@ -80,7 +78,7 @@ class PriceCalculatorTest {
     void 스페셜데이_평일할인() {
         // given  199,000 - 6,500 -> 192,500
         Orders orders = new Orders(LocalDate.of(2023, 12, 31)); // 토 & 15일 경과
-        Order order1 = Order.of(FoodName.from("초코케이크"), Quantity.from("2"));
+        FoodItem order1 = FoodItem.createItem("초코케이크", "2");
         orders.addOrder(order1);
         // when
         int price = calculator.calculateDiscountedPrice(orders);

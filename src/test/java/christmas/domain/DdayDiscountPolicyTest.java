@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import christmas.domain.discount.DdayDiscountPolicy;
-import christmas.domain.discount.DiscountPolicy;
+import christmas.domain.promotion.discount.DdayDiscountPolicy;
+import christmas.domain.promotion.discount.DiscountPolicy;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,14 +9,14 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 
 class DdayDiscountPolicyTest {
-    Order order1;
-    Order order2;
+    FoodItem order1;
+    FoodItem order2;
     DiscountPolicy discountPolicy;
 
     @BeforeEach
     void setUp() {
-        order1 = Order.of(FoodName.from("양송이스프"), Quantity.from("1"));
-        order2 = Order.of(FoodName.from("제로콜라"), Quantity.from("1"));
+        order1 = FoodItem.createItem("양송이스프", "1");
+        order2 = FoodItem.createItem("제로콜라", "1");
     }
 
     // 조건에 해당되는 경우, 할인율을 계산하고 맞는지 확인

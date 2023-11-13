@@ -1,8 +1,8 @@
-package christmas.domain.discount;
+package christmas.domain.promotion.discount;
 
 import christmas.domain.calendar.DayChecker;
 import christmas.domain.FoodCategory;
-import christmas.domain.Order;
+import christmas.domain.FoodItem;
 import christmas.domain.Orders;
 
 import java.time.LocalDate;
@@ -18,7 +18,7 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
             return 0;
         int count = orders.getOrders().stream()
                 .filter(order -> order.menu().getCategory() == FoodCategory.MAINDISH)
-                .mapToInt(Order::getQuantity)
+                .mapToInt(FoodItem::getQuantity)
                 .sum();
         return count * 2023;
     }

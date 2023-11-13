@@ -7,39 +7,33 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class OrderTest {
+class FoodItemTest {
+
+    String name = "티본스테이크";
+    String quantity = "1";
 
     @Test
     void 주문_생성_성공() {
-        // given
-        FoodName foodName = FoodName.from("티본스테이크");
-        Quantity quantity = Quantity.from("1");
         // when
-        Order order = Order.of(foodName, quantity);
+        FoodItem order = FoodItem.createItem(name, quantity);
         // then
         assertNotNull(order);
     }
 
     @Test
     void 메뉴판에_없는_메뉴를_주문시_예외발생() {
-        // given
-        FoodName foodName = FoodName.from("아무거나");
-        Quantity quantity = Quantity.from("1");
         // when & then
         assertThatThrownBy(()
-                -> Order.of(foodName, quantity))
+                -> FoodItem.createItem("아무거나", "1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 메뉴_수량_반환() {
-        // given
-        FoodName foodName = FoodName.from("티본스테이크");
-        Quantity quantity = Quantity.from("1");
         // when
-        Order order = Order.of(foodName, quantity);
+        FoodItem order = FoodItem.createItem(name, quantity);
         // then
-        assertEquals(quantity.getQuantity(), order.getQuantity());
-        assertEquals(Menu.from(foodName), order.menu());
+        assertEquals(quantity, order.getQuantity());
+        assertEquals(name, order.menu());
     }
 }

@@ -1,25 +1,25 @@
 package christmas.domain;
 
-public class Order {
+public class FoodItem {
     private FoodName name;
     private Quantity count;
 
-    private Order(FoodName name, Quantity count) {
+    private FoodItem(FoodName name, Quantity count) {
         this.name = name;
         this.count = count;
     }
 
-    public static Order of(FoodName name, Quantity count) {
+    public static FoodItem createItem(String name, String count) {
         validate(name);
-        return new Order(
-                name,
-                count
+        return new FoodItem(
+                FoodName.from(name),
+                Quantity.from(count)
         );
     }
 
-    private static void validate(FoodName name) {
+    private static void validate(String name) {
         try {
-            Menu.valueOf(name.getName());
+            Menu.valueOf(name);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
         }

@@ -1,4 +1,4 @@
-package christmas.domain.discount;
+package christmas.domain.promotion.discount;
 
 import christmas.domain.Orders;
 
