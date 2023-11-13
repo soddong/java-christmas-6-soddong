@@ -2,8 +2,6 @@ package christmas.domain.calendar;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.EnumSet;
-import java.util.WeakHashMap;
 
 public class DayChecker {
     private LocalDate dateToCheck;
@@ -30,7 +28,7 @@ public class DayChecker {
      */
     public boolean isWeekDay() {
         DayOfWeek week = dateToCheck.getDayOfWeek();
-        return WeekDate.isWeekDate(week);
+        return WeekDay.isWeekDate(week);
     }
 
     /**
@@ -39,7 +37,7 @@ public class DayChecker {
      * @return dateToCheck가 평일이면 true, 아니면 false
      */
     public boolean isSpecialDay() {
-        return SpecialDate.isSpecialDay(dateToCheck);
+        return SpecialDay.isSpecialDay(dateToCheck);
     }
 
 }
