@@ -32,5 +32,17 @@ class DdayDiscountPolicyTest {
         // then
         Assertions.assertThat(discountedPrice).isEqualTo(1000);
     }
-    // 조건에 해당되지 않는 경우, 0원
+
+    @Test
+    public void 적용날짜가_아닌경우_디데이할인이_적용되지않는다() {
+        // given
+        Orders orders = new Orders(LocalDate.of(2023, 11, 1));
+        orders.addOrder(order1);
+        orders.addOrder(order2);
+        discountPolicy = new DdayDiscountPolicy();
+        // when
+        int discountedPrice = discountPolicy.calculateDiscountAmount(orders);
+        // then
+        Assertions.assertThat(discountedPrice).isEqualTo(0);
+    }
 }
