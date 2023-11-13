@@ -40,14 +40,14 @@ class EventManagerTest {
     }
 
     @Test
-    void sumDiscounts() {
+    void 할인_정책들을_모두_계산할수있다() {
         // when & then
         assertThat(eventManager.sumDiscounts(orders))
                 .isEqualTo(2*2023+1000);
     }
 
     @Test
-    void receiveGifts() {
+    void 증정품들을_얻을수_있다() {
         // when & then
         assertThat(eventManager.receiveGifts(orders))
                 .containsExactly(item);

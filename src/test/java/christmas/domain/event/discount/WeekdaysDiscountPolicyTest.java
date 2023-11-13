@@ -1,5 +1,7 @@
-package christmas.domain;
+package christmas.domain.event.discount;
 
+import christmas.domain.FoodItem;
+import christmas.domain.Orders;
 import christmas.domain.event.discount.DiscountPolicy;
 import christmas.domain.event.discount.WeekdaysDiscountPolicy;
 import org.assertj.core.api.Assertions;

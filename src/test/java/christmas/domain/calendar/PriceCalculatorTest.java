@@ -1,5 +1,7 @@
-package christmas.domain;
+package christmas.domain.calendar;
 
+import christmas.domain.FoodItem;
+import christmas.domain.Orders;
 import christmas.domain.event.discount.DdayDiscountPolicy;
 import christmas.domain.event.discount.DiscountPolicy;
 import christmas.domain.event.discount.SpecialDiscountPolicy;
