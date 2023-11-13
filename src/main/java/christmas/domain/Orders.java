@@ -4,32 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Orders {
-    private List<OrderFood> orders;
+    private List<Order> orders;
     private static final int MAX_ORDER_SIZE = 20;
 
     public Orders() {
         this.orders = new ArrayList<>();
     }
 
-    public void addOrderFood(OrderFood orderFood) {
-        if (isOrderSizeExceeded(orderFood)) {
+    public void addOrder(Order order) {
+        if (isOrderSizeExceeded(order)) {
             throw new IllegalArgumentException();
         }
-        if (isDrinkOnlyOrder(orderFood)) {
+        if (isDrinkOnlyOrder(order)) {
             throw new IllegalArgumentException();
         }
-        this.orders.add(orderFood);
+        this.orders.add(order);
     }
 
-    private boolean isOrderSizeExceeded(OrderFood newOrderFood) {
+    private boolean isOrderSizeExceeded(Order newOrder) {
         int totalSize = orders.stream()
-                .mapToInt(OrderFood::getQuantity)
-                .sum() + newOrderFood.getQuantity();
+                .mapToInt(Order::getQuantity)
+                .sum() + newOrder.getQuantity();
         return totalSize > MAX_ORDER_SIZE;
     }
 
-    private boolean isDrinkOnlyOrder(OrderFood newOrderFood) {
-        if (newOrderFood.menu().getCategory() != FoodCategory.DRINK) {
+    private boolean isDrinkOnlyOrder(Order newOrder) {
+        if (newOrder.menu().getCategory() != FoodCategory.DRINK) {
             return false;
         }
 
@@ -37,7 +37,7 @@ public class Orders {
                 .allMatch(orderFood -> orderFood.menu().getCategory() == FoodCategory.DRINK);
     }
 
-    public List<OrderFood> getOrderFoods() {
+    public List<Order> getOrders() {
         return new ArrayList<>(orders);
     }
 

@@ -1,10 +1,10 @@
 package christmas.domain;
 
 public class Money {
-    private int meony;
+    private int money;
 
-    public Money(int meony) {
-        this.meony = meony;
+    public Money(int money) {
+        this.money = money;
     }
 
     public static Money from(int money) {
@@ -12,8 +12,14 @@ public class Money {
         return new Money(money);
     }
 
+    public Money add(Money other) {
+        return new Money(this.money + other.money);
+    }
+
     private static void validate(int money) {
         if (money < 0)
             throw new IllegalArgumentException();
     }
+
+
 }

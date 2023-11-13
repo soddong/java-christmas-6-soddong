@@ -23,25 +23,25 @@ class OrdersTest {
     @Test
     void 주문을_추가한다() {
         // given
-        OrderFood orderFood1 = OrderFood.of(main, cnt);
-        OrderFood orderFood2 = OrderFood.of(drink, cnt);
+        Order order1 = Order.of(main, cnt);
+        Order order2 = Order.of(drink, cnt);
 
         // when & then
-        assertDoesNotThrow(() -> orders.addOrderFood(orderFood1));
-        assertDoesNotThrow(() -> orders.addOrderFood(orderFood2));
-        assertEquals(2, orders.getOrderFoods().size());
+        assertDoesNotThrow(() -> orders.addOrder(order1));
+        assertDoesNotThrow(() -> orders.addOrder(order2));
+        assertEquals(2, orders.getOrders().size());
     }
 
     @Test
     void 최대주문_가능항목을_초과하면_예외가_발생한다() {
         // given
         cnt = Quantity.from("11");
-        OrderFood orderFood = OrderFood.of(main, cnt);
-        OrderFood orderFood2 = OrderFood.of(main, cnt);
+        Order order = Order.of(main, cnt);
+        Order order2 = Order.of(main, cnt);
         // when
-        orders.addOrderFood(orderFood);
+        orders.addOrder(order);
         // then
-        assertThatThrownBy(() -> orders.addOrderFood(orderFood2))
+        assertThatThrownBy(() -> orders.addOrder(order2))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -50,8 +50,8 @@ class OrdersTest {
         // given
         cnt = Quantity.from("1");
         // when
-        OrderFood drinkOrder = OrderFood.of(drink, cnt);
+        Order drinkOrder = Order.of(drink, cnt);
         // then
-        assertThrows(IllegalArgumentException.class, () -> orders.addOrderFood(drinkOrder));
+        assertThrows(IllegalArgumentException.class, () -> orders.addOrder(drinkOrder));
     }
 }
