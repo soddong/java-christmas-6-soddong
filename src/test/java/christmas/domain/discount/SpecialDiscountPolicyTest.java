@@ -1,11 +1,9 @@
 package christmas.domain.discount;
 
-import christmas.domain.FoodName;
 import christmas.domain.FoodItem;
 import christmas.domain.Orders;
-import christmas.domain.Quantity;
-import christmas.domain.promotion.discount.DiscountPolicy;
-import christmas.domain.promotion.discount.SpecialDiscountPolicy;
+import christmas.domain.event.discount.DiscountPolicy;
+import christmas.domain.event.discount.SpecialDiscountPolicy;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

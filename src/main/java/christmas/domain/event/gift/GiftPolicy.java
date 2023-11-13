@@ -1,8 +1,7 @@
-package christmas.domain.promotion.gift;
+package christmas.domain.event.gift;
 
 import christmas.domain.FoodItem;
 import christmas.domain.Orders;
-import java.time.LocalDate;
 import java.util.Optional;
 
 public interface GiftPolicy {

@@ -1,7 +1,7 @@
 package christmas.domain.price;
 
 import christmas.domain.Orders;
-import christmas.domain.promotion.discount.DiscountPolicy;
+import christmas.domain.event.discount.DiscountPolicy;
 
 import java.util.List;
 

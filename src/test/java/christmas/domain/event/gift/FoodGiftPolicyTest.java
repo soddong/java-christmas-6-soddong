@@ -1,12 +1,10 @@
-package christmas.domain.promotion.gift;
+package christmas.domain.event.gift;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import christmas.domain.FoodItem;
 import christmas.domain.Orders;
-import java.time.LocalDate;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class FoodGiftPolicyTest {

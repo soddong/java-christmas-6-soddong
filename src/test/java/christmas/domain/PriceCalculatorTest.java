@@ -1,10 +1,10 @@
 package christmas.domain;
 
-import christmas.domain.promotion.discount.DdayDiscountPolicy;
-import christmas.domain.promotion.discount.DiscountPolicy;
-import christmas.domain.promotion.discount.SpecialDiscountPolicy;
-import christmas.domain.promotion.discount.WeekdaysDiscountPolicy;
-import christmas.domain.promotion.discount.WeekendDiscountPolicy;
+import christmas.domain.event.discount.DdayDiscountPolicy;
+import christmas.domain.event.discount.DiscountPolicy;
+import christmas.domain.event.discount.SpecialDiscountPolicy;
+import christmas.domain.event.discount.WeekdaysDiscountPolicy;
+import christmas.domain.event.discount.WeekendDiscountPolicy;
 import christmas.domain.price.PriceCalculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

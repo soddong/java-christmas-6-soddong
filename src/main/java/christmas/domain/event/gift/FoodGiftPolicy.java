@@ -1,10 +1,8 @@
-package christmas.domain.promotion.gift;
+package christmas.domain.event.gift;
 
 import christmas.domain.FoodItem;
-import christmas.domain.FoodName;
-import christmas.domain.Money;
 import christmas.domain.Orders;
-import christmas.domain.Quantity;
+import christmas.domain.event.EventCondition;
 import java.util.Optional;
 
 public class FoodGiftPolicy implements GiftPolicy {
@@ -25,12 +23,6 @@ public class FoodGiftPolicy implements GiftPolicy {
 
     @Override
     public boolean isValidForCondition(Orders orders) {
-        return isOverThreshold(orders);
-    }
-
-    private boolean isOverThreshold(Orders orders) {
-        return orders.getOrders().stream()
-                .mapToInt(order -> order.menu().getPrice() * order.getQuantity())
-                .sum() >= threshold;
+        return EventCondition.isOrderPricesAboveThreshold(orders, threshold);
     }
 }

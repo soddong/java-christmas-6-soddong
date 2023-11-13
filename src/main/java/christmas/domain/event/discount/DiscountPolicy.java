@@ -1,9 +1,8 @@
-package christmas.domain.promotion.discount;
+package christmas.domain.event.discount;
 
 import christmas.domain.Orders;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public interface DiscountPolicy {
     /**

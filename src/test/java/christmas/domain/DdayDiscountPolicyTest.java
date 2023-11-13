@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import christmas.domain.promotion.discount.DdayDiscountPolicy;
-import christmas.domain.promotion.discount.DiscountPolicy;
+import christmas.domain.event.discount.DdayDiscountPolicy;
+import christmas.domain.event.discount.DiscountPolicy;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
