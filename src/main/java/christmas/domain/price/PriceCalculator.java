@@ -1,21 +1,21 @@
 package christmas.domain.price;
 
 import christmas.domain.Orders;
+import christmas.domain.event.EventManager;
 import christmas.domain.event.discount.DiscountPolicy;
 
 import java.util.List;
+import java.util.Optional;
 
 public class PriceCalculator {
-    private List<DiscountPolicy> discountPolicies;
+    private EventManager eventManager;
 
-    public PriceCalculator(List<DiscountPolicy> discountPolicies) {
-        this.discountPolicies = discountPolicies;
+    public PriceCalculator(EventManager eventManager) {
+        this.eventManager = eventManager;
     }
 
     public int calculateDiscountedPrice(Orders orders) {
-        int originalPrice = calculateOriginalPrice(orders);
-        int totalDiscount = calculateTotalDiscount(orders);
-        return originalPrice - totalDiscount;
+        return calculateOriginalPrice(orders) - calculateTotalDiscount(orders);
     }
 
     private int calculateOriginalPrice(Orders orders) {
@@ -25,8 +25,10 @@ public class PriceCalculator {
     }
 
     private int calculateTotalDiscount(Orders orders) {
-        return discountPolicies.stream()
-                .mapToInt(discountPolicy -> discountPolicy.calculateDiscountAmount(orders))
-                .sum();
+        return eventManager.getActiveDiscountPolicies()
+                .map(policies -> policies
+                .stream()
+                .mapToInt(policy -> policy.calculateDiscountAmount(orders))
+                .sum()).orElse(0);
     }
 }

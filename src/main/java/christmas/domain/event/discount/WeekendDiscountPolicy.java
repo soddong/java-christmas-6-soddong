@@ -5,6 +5,7 @@ import christmas.domain.FoodCategory;
 import christmas.domain.FoodItem;
 import christmas.domain.Orders;
 
+import christmas.domain.event.EventCondition;
 import java.time.LocalDate;
 
 public class WeekendDiscountPolicy implements DiscountPolicy {
@@ -14,7 +15,7 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
     @Override
     public int calculateDiscountAmount(Orders orders) {
         LocalDate orderDate = orders.getDate();
-        if (!isValidForCondition(orderDate))
+        if (!isValidForCondition(orderDate) || !EventCondition.isOrderPricesAboveThreshold(orders, 10_000))
             return 0;
         int count = orders.getOrders().stream()
                 .filter(order -> order.menu().getCategory() == FoodCategory.MAINDISH)
