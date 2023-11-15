@@ -20,6 +20,11 @@ public class Orders {
         this.date = date;
     }
 
+    public Orders(List<FoodItem> orders, LocalDate date) {
+        this.orders = orders;
+        this.date = date;
+    }
+
     public void addOrder(FoodItem order) {
         if (isOrderSizeExceeded(order)) {
             throw new IllegalArgumentException("주문개수를 초과");

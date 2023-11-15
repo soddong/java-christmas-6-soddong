@@ -4,7 +4,7 @@ public class FoodItem {
     private FoodName name;
     private Quantity count;
 
-    private FoodItem(FoodName name, Quantity count) {
+    public FoodItem(FoodName name, Quantity count) {
         this.name = name;
         this.count = count;
     }

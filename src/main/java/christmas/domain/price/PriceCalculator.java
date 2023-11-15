@@ -18,13 +18,13 @@ public class PriceCalculator {
         return calculateOriginalPrice(orders) - calculateTotalDiscount(orders);
     }
 
-    private int calculateOriginalPrice(Orders orders) {
+    public int calculateOriginalPrice(Orders orders) {
         return orders.getOrders().stream()
                 .mapToInt(order -> order.menu().getPrice() * order.getQuantity())
                 .sum();
     }
 
-    private int calculateTotalDiscount(Orders orders) {
+    public int calculateTotalDiscount(Orders orders) {
         return eventManager.getActiveDiscountPolicies()
                 .map(policies -> policies
                 .stream()

@@ -2,6 +2,7 @@ package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.validator.InputValidator;
+import java.util.Arrays;
 
 public class InputNumber {
     public static int inputDateNumber() {
@@ -10,10 +11,10 @@ public class InputNumber {
         return Integer.parseInt(input);
     }
 
-    public static String inputMenuString() {
+    public static String[] inputMenuString() {
         String input = Console.readLine();
         InputValidator.validateInputOrderString(input);
-        return input;
+        return input.split(",");
     }
 
 }

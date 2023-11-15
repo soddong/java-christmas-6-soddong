@@ -27,7 +27,7 @@ public class OrderValidator {
     private static void validateExistsMenu(String name) {
         try {
             Menu.valueOf(name);
-        } catch (IllegalStateException e) {
+        } catch (IllegalArgumentException e) {
             throw ExceptionMessage.INVALID_VALUE.create(ORDER);
         }
     }
