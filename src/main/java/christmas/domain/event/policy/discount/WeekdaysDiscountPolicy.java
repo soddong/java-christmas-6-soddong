@@ -1,11 +1,10 @@
 package christmas.domain.event.policy.discount;
 
-import christmas.domain.calendar.Date;
-import christmas.domain.order.FoodCategory;
 import christmas.domain.FoodItem;
-import christmas.domain.order.Orders;
-
+import christmas.domain.calendar.Date;
 import christmas.domain.event.EventCondition;
+import christmas.domain.order.FoodCategory;
+import christmas.domain.order.Orders;
 import java.time.LocalDate;
 
 public class WeekdaysDiscountPolicy implements DiscountPolicy {
@@ -16,8 +15,9 @@ public class WeekdaysDiscountPolicy implements DiscountPolicy {
     public int calculateDiscountAmount(Orders orders) {
         LocalDate orderDate = orders.getDate();
         if (!isValidForCondition(orderDate)
-                || !EventCondition.isOrderPricesAboveThreshold(orders))
+                || !EventCondition.isOrderPricesAboveThreshold(orders)) {
             return 0;
+        }
         int count = orders.getOrders().stream()
                 .filter(order -> order.menu().getCategory() == FoodCategory.DESSERT)
                 .mapToInt(FoodItem::getQuantity)

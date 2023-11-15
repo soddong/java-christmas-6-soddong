@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import static christmas.view.OutputView.OUTPUT_DETAIL_PROFIT_MESSAGE;
 import static christmas.view.OutputView.OUTPUT_GIFT_MESSAGE;
 import static christmas.view.OutputView.OUTPUT_ORDER_MESSAGE;
 import static christmas.view.OutputView.OUTPUT_ORIGIN_PRICE_MESSAGE;
@@ -44,6 +45,9 @@ public class EventController {
         List<FoodItem> gifts = receiveGift(orders);
         displayGifts(gifts);
 
+        // 혜택내역 구현x
+        displayProfits();
+
         Money giftPrice = applyGift(gifts);
         Money discountPrice = applyDiscount(orders);
         displayMoney(KoreaMoney.add(giftPrice, discountPrice), OUTPUT_TOTAL_PROFIT_MESSAGE);
@@ -83,6 +87,10 @@ public class EventController {
         return KoreaMoney.sub(originPrice, discountPrice);
     }
 
+    private Grade getGrade(Money discountPrice) {
+        return Grade.createFrom(discountPrice);
+    }
+
     private Money applyGift(List<FoodItem> gifts) {
         return KoreaMoney.from(
                 priceCalculator.calculateTotalGifts(gifts)
@@ -93,10 +101,6 @@ public class EventController {
         return KoreaMoney.from(
                 priceCalculator.calculateTotalDiscount(orders)
         );
-    }
-
-    private Grade getGrade(Money discountPrice) {
-        return Grade.createFrom(discountPrice);
     }
 
     private void displayGrade(final Grade grade) {
@@ -128,5 +132,10 @@ public class EventController {
         newLine();
         printMessage(message);
         printMessage(price.toString());
+    }
+
+    private void displayProfits() {
+        newLine();
+        printMessage(OUTPUT_DETAIL_PROFIT_MESSAGE);
     }
 }
