@@ -1,9 +1,11 @@
-package christmas.domain;
+package christmas.domain.order;
 
-import static christmas.domain.FoodCategory.APPETIZER;
-import static christmas.domain.FoodCategory.DESSERT;
-import static christmas.domain.FoodCategory.DRINK;
-import static christmas.domain.FoodCategory.MAINDISH;
+import static christmas.domain.order.FoodCategory.APPETIZER;
+import static christmas.domain.order.FoodCategory.DESSERT;
+import static christmas.domain.order.FoodCategory.DRINK;
+import static christmas.domain.order.FoodCategory.MAINDISH;
+
+import christmas.domain.FoodName;
 
 public enum Menu {
     양송이스프(APPETIZER, 6_000),

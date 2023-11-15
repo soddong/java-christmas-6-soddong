@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.domain.order.Menu;
+
 public class FoodItem {
     private FoodName name;
     private Quantity count;
@@ -31,5 +33,9 @@ public class FoodItem {
 
     public int getQuantity() {
         return count.getQuantity();
+    }
+
+    public String toString() {
+        return String.format("%s %d개", name.getName(), count.getQuantity());
     }
 }

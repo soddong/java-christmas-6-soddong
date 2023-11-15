@@ -4,8 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import christmas.domain.FoodItem;
-import christmas.domain.Orders;
-import christmas.domain.event.gift.FoodGiftPolicy;
+import christmas.domain.order.Orders;
 import org.junit.jupiter.api.Test;
 
 class EventConditionTest {

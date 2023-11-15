@@ -1,20 +1,18 @@
-package christmas.domain.event;
+package christmas.domain.event.policy;
 
 import christmas.domain.FoodItem;
-import christmas.domain.Orders;
-import christmas.domain.event.discount.DdayDiscountPolicy;
-import christmas.domain.event.discount.DiscountPolicy;
-import christmas.domain.event.discount.SpecialDiscountPolicy;
-import christmas.domain.event.discount.WeekdaysDiscountPolicy;
-import christmas.domain.event.discount.WeekendDiscountPolicy;
-import christmas.domain.event.gift.FoodGiftPolicy;
-import christmas.domain.event.gift.GiftPolicy;
+import christmas.domain.event.policy.discount.DdayDiscountPolicy;
+import christmas.domain.event.policy.discount.DiscountPolicy;
+import christmas.domain.event.policy.discount.SpecialDiscountPolicy;
+import christmas.domain.event.policy.discount.WeekdaysDiscountPolicy;
+import christmas.domain.event.policy.discount.WeekendDiscountPolicy;
+import christmas.domain.event.policy.gift.FoodGiftPolicy;
+import christmas.domain.event.policy.gift.GiftPolicy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-public class EventManager {
+public class PolicyManager {
     private static final int THRESHOLD_OF_SHAMPAIN_GIFT = 120_000;
 
     public Optional<List<DiscountPolicy>> getActiveDiscountPolicies() {

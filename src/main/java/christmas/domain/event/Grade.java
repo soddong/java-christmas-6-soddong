@@ -1,5 +1,6 @@
 package christmas.domain.event;
 
+import christmas.domain.price.money.Money;
 import java.util.Comparator;
 import java.util.stream.Stream;
 
@@ -11,13 +12,13 @@ public enum Grade {
 
     private final int price;
 
-    Grade(int price) {
+    private Grade(int price) {
         this.price = price;
     }
 
-    public static Grade createFrom(int price) {
+    public static Grade createFrom(Money price) {
         return Stream.of(Grade.values())
-                .filter(grade -> grade.price <= price)
+                .filter(grade -> grade.price <= price.money())
                 .max(Comparator.comparingInt(g -> g.price))
                 .orElse(없음);
     }

@@ -1,25 +1,6 @@
 package christmas.domain.event;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
-import christmas.domain.FoodItem;
-import christmas.domain.Menu;
-import christmas.domain.Orders;
-import christmas.domain.event.discount.DdayDiscountPolicy;
-import christmas.domain.event.discount.DiscountPolicy;
-import christmas.domain.event.discount.SpecialDiscountPolicy;
-import christmas.domain.event.discount.WeekdaysDiscountPolicy;
-import christmas.domain.event.discount.WeekendDiscountPolicy;
-import christmas.domain.event.gift.FoodGiftPolicy;
-import christmas.domain.event.gift.GiftPolicy;
-import christmas.domain.price.PriceCalculator;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 class EventManagerTest {
 //    EventManager eventManager;

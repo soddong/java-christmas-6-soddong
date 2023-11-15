@@ -1,9 +1,8 @@
-package christmas.domain.event.gift;
+package christmas.domain.event.policy.gift;
 
 import christmas.domain.FoodItem;
-import christmas.domain.Orders;
+import christmas.domain.order.Orders;
 import christmas.domain.event.EventCondition;
-import java.util.Optional;
 
 public class FoodGiftPolicy implements GiftPolicy {
     private FoodItem gift;
@@ -15,10 +14,10 @@ public class FoodGiftPolicy implements GiftPolicy {
     }
 
     @Override
-    public Optional<FoodItem> receiveGift(Orders orders) {
-        return isValidForCondition(orders)
-                ?Optional.of(gift)
-                :Optional.empty();
+    public FoodItem receiveGift(Orders orders) {
+        if (isValidForCondition(orders))
+            return gift;
+        return null;
     }
 
     @Override

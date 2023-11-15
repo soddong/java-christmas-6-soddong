@@ -1,6 +1,8 @@
-package christmas.domain.event.discount;
+package christmas.domain.event.policy.discount;
 
-import christmas.domain.Orders;
+import static christmas.domain.event.EventCondition.EVENT_COMMON_THRESOLD;
+
+import christmas.domain.order.Orders;
 import christmas.domain.calendar.Date;
 
 import christmas.domain.event.EventCondition;
@@ -11,7 +13,8 @@ public class SpecialDiscountPolicy implements DiscountPolicy {
     @Override
     public int calculateDiscountAmount(Orders orders) {
         LocalDate orderDate = orders.getDate();
-        if (!isValidForCondition(orderDate) || !EventCondition.isOrderPricesAboveThreshold(orders, 10_000))
+        if (!isValidForCondition(orderDate) ||
+                !EventCondition.isOrderPricesAboveThreshold(orders))
             return 0;
         return 1000;
     }

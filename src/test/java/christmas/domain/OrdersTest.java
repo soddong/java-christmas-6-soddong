@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import org.junit.jupiter.api.BeforeEach;
+import christmas.domain.order.Orders;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

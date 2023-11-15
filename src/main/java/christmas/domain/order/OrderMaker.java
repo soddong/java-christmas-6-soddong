@@ -1,10 +1,8 @@
-package christmas.service;
+package christmas.domain.order;
 
 import christmas.domain.FoodItem;
 import christmas.domain.FoodName;
-import christmas.domain.Orders;
 import christmas.domain.Quantity;
-import christmas.domain.calendar.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +10,6 @@ import java.util.List;
 public class OrderMaker {
     private LocalDate date;
     private List<FoodItem> menus;
-
 
     public OrderMaker selectDate(int day) {
         this.date = LocalDate.of(2023, 12, day);
@@ -32,6 +29,6 @@ public class OrderMaker {
     }
 
     public Orders build() {
-        return new Orders(menus, date);
+        return Orders.createOf(menus, date);
     }
 }

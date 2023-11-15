@@ -1,10 +1,8 @@
 package christmas.domain.price;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import christmas.domain.FoodItem;
-import christmas.domain.Orders;
-import christmas.domain.event.EventManager;
+import christmas.domain.order.Orders;
+import christmas.domain.event.policy.EventManager;
 import java.time.LocalDate;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

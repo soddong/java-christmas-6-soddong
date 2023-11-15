@@ -1,17 +1,17 @@
 package christmas.domain.price;
 
-import christmas.domain.Orders;
-import christmas.domain.event.EventManager;
-import christmas.domain.event.discount.DiscountPolicy;
-
+import christmas.domain.FoodItem;
+import christmas.domain.order.Orders;
+import christmas.domain.event.policy.PolicyManager;
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class PriceCalculator {
-    private EventManager eventManager;
+    private PolicyManager policyManager;
 
-    public PriceCalculator(EventManager eventManager) {
-        this.eventManager = eventManager;
+    public PriceCalculator(PolicyManager policyManager) {
+        this.policyManager = policyManager;
     }
 
     public int calculateDiscountedPrice(Orders orders) {
@@ -25,10 +25,22 @@ public class PriceCalculator {
     }
 
     public int calculateTotalDiscount(Orders orders) {
-        return eventManager.getActiveDiscountPolicies()
+        return policyManager.getActiveDiscountPolicies()
                 .map(policies -> policies
-                .stream()
-                .mapToInt(policy -> policy.calculateDiscountAmount(orders))
-                .sum()).orElse(0);
+                    .stream()
+                    .mapToInt(policy -> policy.calculateDiscountAmount(orders))
+                    .sum())
+                .orElse(0);
     }
+
+    public List<FoodItem> receiveGifts(Orders orders) {
+        return policyManager.getActiveGiftPolicies()
+                .stream()
+                .flatMap(policies -> policies
+                        .stream()
+                        .map(policy -> policy.receiveGift(orders))
+                        .filter(Objects::nonNull))
+                .collect(Collectors.toList());
+    }
+
 }

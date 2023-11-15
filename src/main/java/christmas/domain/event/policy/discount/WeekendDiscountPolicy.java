@@ -1,24 +1,25 @@
-package christmas.domain.event.discount;
+package christmas.domain.event.policy.discount;
 
 import christmas.domain.calendar.Date;
-import christmas.domain.FoodCategory;
+import christmas.domain.order.FoodCategory;
 import christmas.domain.FoodItem;
-import christmas.domain.Orders;
+import christmas.domain.order.Orders;
 
 import christmas.domain.event.EventCondition;
 import java.time.LocalDate;
 
-public class WeekdaysDiscountPolicy implements DiscountPolicy {
+public class WeekendDiscountPolicy implements DiscountPolicy {
     private LocalDate start = LocalDate.of(2023, 12, 1);
     private LocalDate end = LocalDate.of(2023, 12, 31);
 
     @Override
     public int calculateDiscountAmount(Orders orders) {
         LocalDate orderDate = orders.getDate();
-        if (!isValidForCondition(orderDate) || !EventCondition.isOrderPricesAboveThreshold(orders, 10_000))
+        if (!isValidForCondition(orderDate) ||
+                !EventCondition.isOrderPricesAboveThreshold(orders))
             return 0;
         int count = orders.getOrders().stream()
-                .filter(order -> order.menu().getCategory() == FoodCategory.DESSERT)
+                .filter(order -> order.menu().getCategory() == FoodCategory.MAINDISH)
                 .mapToInt(FoodItem::getQuantity)
                 .sum();
         return count * 2023;
@@ -27,6 +28,6 @@ public class WeekdaysDiscountPolicy implements DiscountPolicy {
     @Override
     public boolean isValidForCondition(LocalDate date) {
         Date dayChecker = new Date(date);
-        return dayChecker.isBetweenRange(start, end) && dayChecker.isWeekDay();
+        return dayChecker.isBetweenRange(start, end) && !dayChecker.isWeekDay();
     }
 }

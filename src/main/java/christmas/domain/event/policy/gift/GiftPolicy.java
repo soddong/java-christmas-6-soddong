@@ -1,8 +1,7 @@
-package christmas.domain.event.gift;
+package christmas.domain.event.policy.gift;
 
 import christmas.domain.FoodItem;
-import christmas.domain.Orders;
-import java.util.Optional;
+import christmas.domain.order.Orders;
 
 public interface GiftPolicy {
     /**
@@ -11,7 +10,7 @@ public interface GiftPolicy {
      * @param orders 주문 내역
      * @return 주문 내역에 해당되는 증정품을 리턴
      */
-    Optional<FoodItem> receiveGift(Orders orders);
+    FoodItem receiveGift(Orders orders);
 
     /**
      * 증정품을 받을수 있는 조건에 충족하는지 확인합니다.
