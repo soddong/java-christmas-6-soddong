@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.validator.OrderValidator;
+
 public class Quantity {
     private int quantity;
 
@@ -8,17 +10,8 @@ public class Quantity {
     }
 
     public static Quantity from(String quantity) {
-        validate(quantity);
+        OrderValidator.validateQuantityNumber(quantity);
         return new Quantity(Integer.parseInt(quantity));
-    }
-
-    private static void validate(String quantity) {
-        if (quantity == null || quantity.isBlank())
-            throw new IllegalArgumentException();
-
-        int value = Integer.parseInt(quantity);
-        if (value < 1)
-            throw new IllegalArgumentException();
     }
 
     public int getQuantity() {

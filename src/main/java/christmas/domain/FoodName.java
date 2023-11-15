@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.validator.OrderValidator;
+
 public class FoodName {
     private String name;
 
@@ -8,14 +10,8 @@ public class FoodName {
     }
 
     public static FoodName from(final String name) {
-        validate(name);
+        OrderValidator.validateFoodName(name);
         return new FoodName(name);
-    }
-
-    public static void validate(final String name) {
-        // 빈 경우
-        if (name.isBlank())
-            throw new IllegalArgumentException();
     }
 
     public String getName() {
