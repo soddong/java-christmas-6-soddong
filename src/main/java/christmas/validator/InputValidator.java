@@ -7,8 +7,6 @@ import java.util.List;
 
 import static christmas.validator.CommonValidator.validateNotEmpty;
 import static christmas.validator.CommonValidator.validateNumber;
-import static christmas.validator.ValidatorConstant.FULL;
-import static christmas.validator.ValidatorConstant.PART;
 
 public class InputValidator {
     private final static String DATE = "날짜";

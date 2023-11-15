@@ -1,7 +1,5 @@
 package christmas.domain.order;
 
-import static christmas.validator.OrderValidator.validateOrders;
-
 import christmas.domain.FoodItem;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,7 +20,6 @@ public class Orders {
     }
 
     public static Orders createOf(List<FoodItem> orders, LocalDate date) {
-        validateOrders(orders);
         return new Orders(orders, date);
     }
 

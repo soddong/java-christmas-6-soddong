@@ -1,11 +1,14 @@
 package christmas.domain.order;
 
+import static christmas.validator.OrderValidator.validateOrders;
+
 import christmas.domain.FoodItem;
 import christmas.domain.FoodName;
 import christmas.domain.Quantity;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrderMaker {
     private LocalDate date;
@@ -17,6 +20,10 @@ public class OrderMaker {
     }
 
     public OrderMaker selectMenu(List<String> menus) {
+        validateOrders(menus.stream()
+                .map(menu -> menu.split("-")[0])
+                .collect(Collectors.toList()));
+
         this.menus = new ArrayList<>();
         for (String menu : menus) {
             String[] items = menu.split("-");

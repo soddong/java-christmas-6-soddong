@@ -7,6 +7,7 @@ public class OutputView {
     public static final String OUTPUT_GIFT_MESSAGE = "<증정 메뉴>";
     public static final String OUTPUT_TOTAL_PROFIT_MESSAGE = "<총혜택 금액>";
     public static final String OUTPUT_EVENT_BEDGE_MESSAGE = "<12월 이벤트 배지>";
+    public static final String OUTPUT_TOTAL_PRICE_MESSAGE = "<할인 후 예상 결제 금액>";
 
     public static void printMessage(String message) {
         System.out.println(message);

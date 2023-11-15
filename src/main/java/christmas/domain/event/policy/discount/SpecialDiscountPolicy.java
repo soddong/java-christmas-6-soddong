@@ -1,7 +1,5 @@
 package christmas.domain.event.policy.discount;
 
-import static christmas.domain.event.EventCondition.EVENT_COMMON_THRESOLD;
-
 import christmas.domain.order.Orders;
 import christmas.domain.calendar.Date;
 

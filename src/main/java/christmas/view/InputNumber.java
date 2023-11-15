@@ -2,7 +2,6 @@ package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.validator.InputValidator;
-import java.util.Arrays;
 
 public class InputNumber {
     public static int inputDateNumber() {

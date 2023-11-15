@@ -10,8 +10,12 @@ public class KoreaMoney extends Money {
         return new KoreaMoney(money);
     }
 
-    public static KoreaMoney sub(Money money1, Money money2) {
-        return new KoreaMoney(money1.money - money2.money);
+    public static KoreaMoney sub(Money base, Money comparison) {
+        return new KoreaMoney(base.money - comparison.money);
+    }
+
+    public static Money add(Money base, Money comparison) {
+        return new KoreaMoney(base.money + comparison.money);
     }
 
     @Override
