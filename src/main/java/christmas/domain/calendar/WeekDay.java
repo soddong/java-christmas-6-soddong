@@ -1,6 +1,7 @@
 package christmas.domain.calendar;
 
 import java.time.DayOfWeek;
+import java.util.stream.Stream;
 
 public enum WeekDay {
     MONDAY(DayOfWeek.MONDAY),
@@ -20,12 +21,8 @@ public enum WeekDay {
     }
 
     public static boolean isWeekDate(DayOfWeek day) {
-        for (WeekDay weekdate : WeekDay.values()) {
-            if (weekdate.getDayOfWeek() == day) {
-                return true;
-            }
-        }
-        return false;
+        return Stream.of(WeekDay.values())
+                .anyMatch(weekDay -> weekDay.getDayOfWeek().equals(day));
     }
 }
 

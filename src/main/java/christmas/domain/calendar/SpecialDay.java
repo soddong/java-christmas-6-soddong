@@ -1,6 +1,7 @@
 package christmas.domain.calendar;
 
 import java.time.LocalDate;
+import java.util.stream.Stream;
 
 public enum SpecialDay {
     DECEMBER_3RD(2023, 12, 3),
@@ -21,11 +22,7 @@ public enum SpecialDay {
     }
 
     public static boolean isSpecialDay(LocalDate date) {
-        for (SpecialDay specialDay : SpecialDay.values()) {
-            if (specialDay.getDate().equals(date)) {
-                return true;
-            }
-        }
-        return false;
+        return Stream.of(SpecialDay.values())
+                .anyMatch(specialDay -> specialDay.getDate().equals(date));
     }
 }

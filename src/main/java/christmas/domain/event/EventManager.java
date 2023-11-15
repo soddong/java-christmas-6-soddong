@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class EventManager {
-    private static final int THRESHOLD_SHAMPAIN_GIFT_POLICY = 120_000;
+    private static final int THRESHOLD_OF_SHAMPAIN_GIFT = 120_000;
 
     public Optional<List<DiscountPolicy>> getActiveDiscountPolicies() {
         List<DiscountPolicy> discountPolicies = new ArrayList<>();
@@ -29,7 +29,7 @@ public class EventManager {
     public Optional<List<GiftPolicy>> getActiveGiftPolicies() {
         List<GiftPolicy> giftPolicies = new ArrayList<>();
         giftPolicies.add(new FoodGiftPolicy(FoodItem.createItem("샴페인", "1")
-                ,THRESHOLD_SHAMPAIN_GIFT_POLICY));
+                ,THRESHOLD_OF_SHAMPAIN_GIFT));
         return Optional.of(giftPolicies);
     }
 }

@@ -1,6 +1,6 @@
 package christmas.domain.event.discount;
 
-import christmas.domain.calendar.DayChecker;
+import christmas.domain.calendar.Date;
 import christmas.domain.FoodCategory;
 import christmas.domain.FoodItem;
 import christmas.domain.Orders;
@@ -26,7 +26,7 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
 
     @Override
     public boolean isValidForCondition(LocalDate date) {
-        DayChecker dayChecker = new DayChecker(date);
+        Date dayChecker = new Date(date);
         return dayChecker.isBetweenRange(start, end) && !dayChecker.isWeekDay();
     }
 }

@@ -1,7 +1,7 @@
 package christmas.domain.event.discount;
 
 import christmas.domain.Orders;
-import christmas.domain.calendar.DayChecker;
+import christmas.domain.calendar.Date;
 
 import christmas.domain.event.EventCondition;
 import java.time.LocalDate;
@@ -18,7 +18,7 @@ public class SpecialDiscountPolicy implements DiscountPolicy {
 
     @Override
     public boolean isValidForCondition(LocalDate date) {
-        DayChecker dayChecker = new DayChecker(date);
+        Date dayChecker = new Date(date);
         return dayChecker.isSpecialDay();
     }
 }
