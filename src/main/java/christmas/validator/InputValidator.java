@@ -1,12 +1,10 @@
 package christmas.validator;
 
-import christmas.view.ExceptionMessage;
+import static christmas.validator.CommonValidator.validateNotEmpty;
+import static christmas.validator.CommonValidator.validateNumber;
 
 import java.util.Arrays;
 import java.util.List;
-
-import static christmas.validator.CommonValidator.validateNotEmpty;
-import static christmas.validator.CommonValidator.validateNumber;
 
 public class InputValidator {
     private final static String DATE = "날짜";
@@ -28,12 +26,14 @@ public class InputValidator {
 
     private static void validateDate(String input) {
         int val = Integer.parseInt(input);
-        if (val < 1 || val > 31)
+        if (val < 1 || val > 31) {
             throw ExceptionMessage.INVALID_VALUE.create(DATE);
+        }
     }
 
     private static void validateOrder(int size) {
-        if (size != 2)
+        if (size != 2) {
             throw ExceptionMessage.INVALID_VALUE.create(ORDER);
+        }
     }
 }

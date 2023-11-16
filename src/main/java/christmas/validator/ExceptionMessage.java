@@ -1,4 +1,4 @@
-package christmas.view;
+package christmas.validator;
 
 public enum ExceptionMessage {
     INVALID_VALUE("[ERROR] 유효하지 않은 %s입니다. 다시 입력해 주세요.");

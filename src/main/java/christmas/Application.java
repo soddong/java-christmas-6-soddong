@@ -7,15 +7,15 @@ import christmas.controller.RateController;
 import christmas.domain.event.policy.PolicyManager;
 import christmas.domain.order.OrderMaker;
 import christmas.domain.price.PriceCalculator;
-import christmas.view.InputView;
+import christmas.view.InputManager;
 
 public class Application {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
+        InputManager inputManager = new InputManager();
         OrderMaker orderMaker = new OrderMaker();
         PriceCalculator priceCalculator = new PriceCalculator(new PolicyManager());
 
-        OrderController orderController = new OrderController(inputView, orderMaker);
+        OrderController orderController = new OrderController(inputManager, orderMaker);
         EventController eventController = new EventController(priceCalculator);
         PriceController priceController = new PriceController(priceCalculator);
         RateController rateController = new RateController();

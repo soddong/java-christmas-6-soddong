@@ -1,6 +1,6 @@
 package christmas.view;
 
-public class OutputView {
+public class OutputPrinter {
     public static final String OUTPUT_INTRO_MESSAGE = "12월 3일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
     public static final String OUTPUT_ORDER_MESSAGE = "<주문 메뉴>";
     public static final String OUTPUT_ORIGIN_PRICE_MESSAGE = "<할인 전 총주문 금액>";

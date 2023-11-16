@@ -2,16 +2,16 @@ package christmas.controller;
 
 import christmas.domain.order.OrderMaker;
 import christmas.domain.order.Orders;
-import christmas.view.InputView;
+import christmas.view.InputManager;
 import java.util.Arrays;
 import java.util.List;
 
 public class OrderController {
-    private final InputView inputView;
+    private final InputManager inputManager;
     private final OrderMaker orderMaker;
 
-    public OrderController(InputView inputView, OrderMaker orderMaker) {
-        this.inputView = inputView;
+    public OrderController(InputManager inputManager, OrderMaker orderMaker) {
+        this.inputManager = inputManager;
         this.orderMaker = orderMaker;
     }
 
@@ -22,15 +22,15 @@ public class OrderController {
     }
 
     private void createDate() {
-        inputView.tryInput(() -> {
-            int date = inputView.readDate();
+        inputManager.tryInput(() -> {
+            int date = inputManager.readDate();
             orderMaker.selectDate(date);
         });
     }
 
     private void createMenu() {
-        inputView.tryInput(() -> {
-            List<String> orders = Arrays.asList(inputView.readMenu());
+        inputManager.tryInput(() -> {
+            List<String> orders = Arrays.asList(inputManager.readMenu());
             orderMaker.selectMenu(orders);
         });
     }

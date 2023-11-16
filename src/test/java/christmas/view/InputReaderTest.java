@@ -1,13 +1,13 @@
 package christmas.view;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+
 import christmas.validator.InputValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-
-class InputNumberTest {
+class InputReaderTest {
     @ParameterizedTest
     @ValueSource(strings = {"1", "2", "31"})
     public void 날짜를_입력받아라(String input) {
@@ -18,7 +18,7 @@ class InputNumberTest {
     @ValueSource(strings = {"0", "32", ""})
     public void 범위에서_벗어나거나_빈문자열이_입력되면_예외발생(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> InputValidator.validateInputDateNumber(input))
-                        .withMessageContaining("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+                .withMessageContaining("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
     }
 
     @ParameterizedTest

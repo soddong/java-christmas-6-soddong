@@ -3,7 +3,7 @@ package christmas.view;
 import camp.nextstep.edu.missionutils.Console;
 import christmas.validator.InputValidator;
 
-public class InputNumber {
+public class InputReader {
     public static int inputDateNumber() {
         String input = Console.readLine();
         InputValidator.validateInputDateNumber(input);
@@ -15,5 +15,4 @@ public class InputNumber {
         InputValidator.validateInputOrderString(input);
         return input.split(",");
     }
-
 }
