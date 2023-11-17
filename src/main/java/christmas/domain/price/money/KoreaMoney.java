@@ -18,6 +18,10 @@ public class KoreaMoney extends Money {
         return new KoreaMoney(base.money + comparison.money);
     }
 
+    public static Money none() {
+        return new KoreaMoney(0);
+    }
+
     @Override
     public String toString() {
         return String.format("%,d원", money);

@@ -4,8 +4,8 @@ import static christmas.view.OutputPrinter.OUTPUT_ORIGIN_PRICE_MESSAGE;
 import static christmas.view.OutputPrinter.OUTPUT_TOTAL_PRICE_MESSAGE;
 import static christmas.view.OutputPrinter.OUTPUT_TOTAL_PROFIT_MESSAGE;
 
-import christmas.domain.food.FoodItem;
 import christmas.domain.event.Grade;
+import christmas.domain.food.FoodItem;
 import christmas.domain.order.Orders;
 import christmas.domain.price.money.KoreaMoney;
 import christmas.domain.price.money.Money;
@@ -15,6 +15,7 @@ import christmas.service.PriceService;
 import christmas.service.RateService;
 import christmas.view.OutputManager;
 import java.util.List;
+import java.util.Optional;
 
 public class ReservationController {
     private final OrderService orderService;
@@ -37,10 +38,11 @@ public class ReservationController {
         Money originPrice = priceService.getOriginPrice(orders);
         OutputManager.displayMoney(originPrice, OUTPUT_ORIGIN_PRICE_MESSAGE);
 
-        List<FoodItem> gifts = eventService.receiveGift(orders);
-        OutputManager.displayGifts(gifts);
+        Optional<List<FoodItem>> gifts = eventService.receiveGift(orders);
+        gifts.ifPresent(OutputManager::displayGifts);
+        Money giftPrice = gifts.map(eventService::getGiftProfits)
+                .orElse(KoreaMoney.none());
 
-        Money giftPrice = eventService.getGiftProfits(gifts);
         Money discountPrice = eventService.getDiscountProfits(orders);
         OutputManager.displayMoney(KoreaMoney.add(giftPrice, discountPrice), OUTPUT_TOTAL_PROFIT_MESSAGE);
 

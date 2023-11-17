@@ -14,7 +14,7 @@ public class PriceService {
 
     public Money getOriginPrice(Orders orders) {
         return KoreaMoney.from(
-                priceCalculator.calculateOriginalPrice(orders)
+                priceCalculator.calculateItemsPrice(orders.getOrders())
         );
     }
 

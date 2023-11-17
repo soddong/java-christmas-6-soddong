@@ -1,7 +1,6 @@
 package christmas.domain.price;
 
 import christmas.domain.food.FoodItem;
-import christmas.domain.event.policy.PolicyManager;
 import christmas.domain.order.Orders;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,9 +10,7 @@ import org.junit.jupiter.api.Test;
 
 class PriceCalculatorTest {
 
-    PriceCalculator priceCalculator = new PriceCalculator(
-            new PolicyManager()
-    );
+    PriceCalculator priceCalculator = new PriceCalculator();
 
     @Test
     void 테스트() {

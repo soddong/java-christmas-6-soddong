@@ -12,11 +12,10 @@ import christmas.view.InputManager;
 
 public class Application {
     public static void main(String[] args) {
-        PriceCalculator priceCalculator = new PriceCalculator(new PolicyManager());
 
         OrderService orderService = new OrderService(new InputManager(), new OrderMaker());
-        EventService eventService = new EventService(priceCalculator);
-        PriceService priceService = new PriceService(priceCalculator);
+        EventService eventService = new EventService(new PriceCalculator(), new PolicyManager());
+        PriceService priceService = new PriceService(new PriceCalculator());
         RateService rateService = new RateService();
 
         ReservationController reservationController = new ReservationController(
