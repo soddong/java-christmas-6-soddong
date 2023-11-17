@@ -12,7 +12,7 @@ public enum WeekDay {
 
     private final DayOfWeek dayOfWeek;
 
-    WeekDay(DayOfWeek dayOfWeek) {
+    WeekDay(final DayOfWeek dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
     }
 
@@ -20,7 +20,7 @@ public enum WeekDay {
         return this.dayOfWeek;
     }
 
-    public static boolean isWeekDate(DayOfWeek day) {
+    public static boolean isWeekDate(final DayOfWeek day) {
         return Stream.of(WeekDay.values())
                 .anyMatch(weekDay -> weekDay.getDayOfWeek().equals(day));
     }

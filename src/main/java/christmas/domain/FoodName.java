@@ -9,7 +9,7 @@ public class FoodName {
         this.name = name;
     }
 
-    public static FoodName from(final String name) {
+    public static FoodName from(String name) {
         OrderValidator.validateFoodName(name);
         return new FoodName(name);
     }

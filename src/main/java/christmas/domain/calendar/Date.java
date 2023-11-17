@@ -14,7 +14,8 @@ public class Date {
      * 주어진 시작 및 종료 날짜 사이에 dateToCheck가 있는지 확인합니다.
      *
      * @param startDate 검사할 시작 날짜
-     * @param endDate 검사할 종료 날짜
+     * @param endDate   검사할 종료 날짜
+     *
      * @return dateToCheck가 startDate와 endDate 사이에 있으면 true, 아니면 false
      */
     public boolean isBetweenRange(LocalDate startDate, LocalDate endDate) {

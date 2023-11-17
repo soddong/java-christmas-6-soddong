@@ -8,8 +8,9 @@ public abstract class Money {
     }
 
     protected static void validate(int money) {
-        if (money < 0)
+        if (money < 0) {
             throw new IllegalArgumentException();
+        }
     }
 
     public int money() {

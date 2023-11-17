@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class SpecialDiscountPolicy implements DiscountPolicy {
 
     @Override
-    public int calculateDiscountAmount(Orders orders) {
+    public int calculateDiscountAmount(final Orders orders) {
         LocalDate orderDate = orders.getDate();
         if (!isValidForCondition(orderDate) ||
                 !EventCondition.isOrderPricesAboveThreshold(orders)) {

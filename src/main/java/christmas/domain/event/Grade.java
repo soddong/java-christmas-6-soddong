@@ -12,11 +12,11 @@ public enum Grade {
 
     private final int price;
 
-    private Grade(int price) {
+    private Grade(final int price) {
         this.price = price;
     }
 
-    public static Grade createFrom(Money price) {
+    public static Grade createFrom(final Money price) {
         return Stream.of(Grade.values())
                 .filter(grade -> grade.price <= price.money())
                 .max(Comparator.comparingInt(g -> g.price))

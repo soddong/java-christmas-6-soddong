@@ -1,29 +1,28 @@
 package christmas;
 
-import christmas.controller.EventController;
-import christmas.controller.OrderController;
-import christmas.controller.PriceController;
-import christmas.controller.RateController;
+import christmas.controller.ReservationController;
 import christmas.domain.event.policy.PolicyManager;
 import christmas.domain.order.OrderMaker;
 import christmas.domain.price.PriceCalculator;
+import christmas.service.EventService;
+import christmas.service.OrderService;
+import christmas.service.PriceService;
+import christmas.service.RateService;
 import christmas.view.InputManager;
 
 public class Application {
     public static void main(String[] args) {
-        InputManager inputManager = new InputManager();
-        OrderMaker orderMaker = new OrderMaker();
         PriceCalculator priceCalculator = new PriceCalculator(new PolicyManager());
 
-        OrderController orderController = new OrderController(inputManager, orderMaker);
-        EventController eventController = new EventController(priceCalculator);
-        PriceController priceController = new PriceController(priceCalculator);
-        RateController rateController = new RateController();
+        OrderService orderService = new OrderService(new InputManager(), new OrderMaker());
+        EventService eventService = new EventService(priceCalculator);
+        PriceService priceService = new PriceService(priceCalculator);
+        RateService rateService = new RateService();
 
-        ReservationProcessor reservationProcessor = new ReservationProcessor(
-                orderController, eventController, priceController, rateController
+        ReservationController reservationController = new ReservationController(
+                orderService, eventService, priceService, rateService
         );
 
-        reservationProcessor.start();
+        reservationController.reserve();
     }
 }

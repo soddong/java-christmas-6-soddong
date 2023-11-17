@@ -21,7 +21,7 @@ public enum SpecialDay {
         return date;
     }
 
-    public static boolean isSpecialDay(LocalDate date) {
+    public static boolean isSpecialDay(final LocalDate date) {
         return Stream.of(SpecialDay.values())
                 .anyMatch(specialDay -> specialDay.getDate().equals(date));
     }

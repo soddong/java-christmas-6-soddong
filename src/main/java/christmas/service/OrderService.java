@@ -1,4 +1,4 @@
-package christmas.controller;
+package christmas.service;
 
 import christmas.domain.order.OrderMaker;
 import christmas.domain.order.Orders;
@@ -6,11 +6,11 @@ import christmas.view.InputManager;
 import java.util.Arrays;
 import java.util.List;
 
-public class OrderController {
+public class OrderService {
     private final InputManager inputManager;
     private final OrderMaker orderMaker;
 
-    public OrderController(InputManager inputManager, OrderMaker orderMaker) {
+    public OrderService(InputManager inputManager, OrderMaker orderMaker) {
         this.inputManager = inputManager;
         this.orderMaker = orderMaker;
     }

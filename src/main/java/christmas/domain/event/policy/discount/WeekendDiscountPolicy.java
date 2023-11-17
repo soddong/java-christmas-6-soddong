@@ -12,7 +12,7 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
     private LocalDate end = LocalDate.of(2023, 12, 31);
 
     @Override
-    public int calculateDiscountAmount(Orders orders) {
+    public int calculateDiscountAmount(final Orders orders) {
         LocalDate orderDate = orders.getDate();
         if (!isValidForCondition(orderDate) ||
                 !EventCondition.isOrderPricesAboveThreshold(orders)) {

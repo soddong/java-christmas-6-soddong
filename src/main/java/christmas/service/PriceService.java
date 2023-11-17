@@ -1,4 +1,4 @@
-package christmas.controller;
+package christmas.service;
 
 import christmas.domain.FoodItem;
 import christmas.domain.order.Orders;
@@ -7,10 +7,10 @@ import christmas.domain.price.money.KoreaMoney;
 import christmas.domain.price.money.Money;
 import java.util.List;
 
-public class PriceController {
+public class PriceService {
     private final PriceCalculator priceCalculator;
 
-    public PriceController(PriceCalculator priceCalculator) {
+    public PriceService(PriceCalculator priceCalculator) {
         this.priceCalculator = priceCalculator;
     }
 

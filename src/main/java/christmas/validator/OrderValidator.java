@@ -36,27 +36,27 @@ public class OrderValidator {
         }
     }
 
-    private static void validateDrinkOnlyOrder(List<String> orders) {
+    private static void validateDrinkOnlyOrder(final List<String> orders) {
         if (orders.stream()
                 .allMatch(orderFood -> Menu.valueOf(orderFood).getCategory() == FoodCategory.DRINK)) {
             throw ExceptionMessage.INVALID_VALUE.create(ORDER);
         }
     }
 
-    private static void validateSize(int size) {
+    private static void validateSize(final int size) {
         if (size > MAX_ORDER_SIZE) {
             throw ExceptionMessage.INVALID_VALUE.create(ORDER);
         }
     }
 
-    private static void validateQuantity(String quantity) {
+    private static void validateQuantity(final String quantity) {
         int val = Integer.parseInt(quantity);
         if (val < 1) {
             throw ExceptionMessage.INVALID_VALUE.create(ORDER);
         }
     }
 
-    private static void validateExistsMenu(String name) {
+    private static void validateExistsMenu(final String name) {
         try {
             Menu.valueOf(name);
         } catch (IllegalArgumentException e) {
