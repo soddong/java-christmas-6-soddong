@@ -9,11 +9,6 @@ public class Orders {
     private List<FoodItem> orders;
     private LocalDate date;
 
-    public Orders() {
-        this.orders = new ArrayList<>();
-        this.date = LocalDate.of(2023, 1, 8);
-    }
-
     private Orders(List<FoodItem> orders, LocalDate date) {
         this.orders = orders;
         this.date = date;

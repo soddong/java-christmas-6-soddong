@@ -1,6 +1,6 @@
 package christmas.domain.food;
 
-import christmas.validator.OrderValidator;
+import christmas.validator.FoodValidator;
 
 public class Quantity {
     private int quantity;
@@ -10,7 +10,7 @@ public class Quantity {
     }
 
     public static Quantity from(String quantity) {
-        OrderValidator.validateQuantityNumber(quantity);
+        FoodValidator.validateQuantityNumber(quantity);
         return new Quantity(Integer.parseInt(quantity));
     }
 

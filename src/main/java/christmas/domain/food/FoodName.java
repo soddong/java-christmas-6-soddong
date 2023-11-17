@@ -1,6 +1,6 @@
 package christmas.domain.food;
 
-import christmas.validator.OrderValidator;
+import christmas.validator.FoodValidator;
 
 public class FoodName {
     private String name;
@@ -10,7 +10,7 @@ public class FoodName {
     }
 
     public static FoodName from(String name) {
-        OrderValidator.validateFoodName(name);
+        FoodValidator.validateFoodName(name);
         return new FoodName(name);
     }
 

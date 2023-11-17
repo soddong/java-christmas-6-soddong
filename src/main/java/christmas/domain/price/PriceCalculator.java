@@ -4,18 +4,10 @@ import christmas.domain.food.Menu;
 import christmas.dto.FoodItem;
 import java.util.List;
 
-//TODO 역할 분리
 public class PriceCalculator {
     public int calculateItemsPrice(List<FoodItem> items) {
         return items.stream()
                 .mapToInt(item -> Menu.from(item.getName()).getPrice() * item.getQuantity())
                 .sum();
     }
-
-    public int calculateTotalGifts(List<FoodItem> items) {
-        return items.stream()
-                .mapToInt(item -> Menu.from(item.getName()).getPrice() * item.getQuantity())
-                .sum();
-    }
-
 }

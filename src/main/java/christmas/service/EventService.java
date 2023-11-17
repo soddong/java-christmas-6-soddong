@@ -31,7 +31,7 @@ public class EventService {
 
     public Money getGiftProfits(List<FoodItem> gifts) {
         return KoreaMoney.from(
-                priceCalculator.calculateTotalGifts(gifts)
+                priceCalculator.calculateItemsPrice(gifts)
         );
     }
 
