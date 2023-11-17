@@ -2,16 +2,16 @@ package christmas.domain.event.policy.discount;
 
 import christmas.domain.calendar.DateChecker;
 import christmas.domain.event.EventCondition;
-import christmas.domain.order.Orders;
+import christmas.dto.OrdersDto;
 import java.time.LocalDate;
 
 public class SpecialDiscountPolicy implements DiscountPolicy {
 
     @Override
-    public int calculateDiscountAmount(final Orders orders) {
-        LocalDate orderDate = orders.getDate();
+    public int calculateDiscountAmount(final OrdersDto ordersDto) {
+        LocalDate orderDate = ordersDto.getDate();
         if (!isValidForCondition(orderDate) ||
-                !EventCondition.isOrderPricesAboveThreshold(orders)) {
+                !EventCondition.isOrderPricesAboveThreshold(ordersDto)) {
             return 0;
         }
         return 1000;

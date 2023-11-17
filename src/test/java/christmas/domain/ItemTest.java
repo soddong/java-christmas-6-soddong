@@ -4,10 +4,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import christmas.dto.FoodItem;
+import christmas.dto.Item;
 import org.junit.jupiter.api.Test;
 
-class FoodItemTest {
+class ItemTest {
 
     String name = "티본스테이크";
     String quantity = "1";
@@ -15,7 +15,7 @@ class FoodItemTest {
     @Test
     void 주문_생성_성공() {
         // when
-        FoodItem order = FoodItem.createItem(name, quantity);
+        Item order = Item.createItem(name, quantity);
         // then
         assertNotNull(order);
     }
@@ -24,14 +24,14 @@ class FoodItemTest {
     void 메뉴판에_없는_메뉴를_주문시_예외발생() {
         // when & then
         assertThatThrownBy(()
-                -> FoodItem.createItem("아무거나", "1"))
+                -> Item.createItem("아무거나", "1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 메뉴_수량_반환() {
         // when
-        FoodItem order = FoodItem.createItem(name, quantity);
+        Item order = Item.createItem(name, quantity);
         // then
         assertEquals(quantity, order.getQuantity());
         assertEquals(name, order.menu());

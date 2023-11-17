@@ -4,8 +4,8 @@ import christmas.domain.calendar.DateChecker;
 import christmas.domain.event.EventCondition;
 import christmas.domain.food.FoodCategory;
 import christmas.domain.food.Menu;
-import christmas.domain.order.Orders;
-import christmas.dto.FoodItem;
+import christmas.dto.Item;
+import christmas.dto.OrdersDto;
 import java.time.LocalDate;
 
 public class WeekdaysDiscountPolicy implements DiscountPolicy {
@@ -13,15 +13,15 @@ public class WeekdaysDiscountPolicy implements DiscountPolicy {
     private LocalDate end = LocalDate.of(2023, 12, 31);
 
     @Override
-    public int calculateDiscountAmount(final Orders orders) {
-        LocalDate orderDate = orders.getDate();
+    public int calculateDiscountAmount(final OrdersDto ordersDto) {
+        LocalDate orderDate = ordersDto.date();
         if (!isValidForCondition(orderDate)
-                || !EventCondition.isOrderPricesAboveThreshold(orders)) {
+                || !EventCondition.isOrderPricesAboveThreshold(ordersDto)) {
             return 0;
         }
-        int count = orders.getOrders().stream()
+        int count = ordersDto.orders().stream()
                 .filter(order -> Menu.from(order.getName()).getCategory() == FoodCategory.DESSERT)
-                .mapToInt(FoodItem::getQuantity)
+                .mapToInt(Item::getQuantity)
                 .sum();
         return count * 2023;
     }

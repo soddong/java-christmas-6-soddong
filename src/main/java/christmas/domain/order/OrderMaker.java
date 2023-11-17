@@ -4,7 +4,8 @@ import static christmas.validator.OrderValidator.validateOrders;
 
 import christmas.domain.food.FoodName;
 import christmas.domain.food.Quantity;
-import christmas.dto.FoodItem;
+import christmas.dto.Item;
+import christmas.dto.OrdersDto;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class OrderMaker {
     private LocalDate date;
-    private List<FoodItem> menus;
+    private List<Item> menus;
 
     public OrderMaker selectDate(int day) {
         this.date = LocalDate.of(2023, 12, day);
@@ -27,7 +28,7 @@ public class OrderMaker {
         this.menus = new ArrayList<>();
         for (String menu : menus) {
             String[] items = menu.split("-");
-            this.menus.add(new FoodItem(
+            this.menus.add(new Item(
                     FoodName.from(items[0]),
                     Quantity.from(items[1])
             ));
@@ -35,7 +36,7 @@ public class OrderMaker {
         return this;
     }
 
-    public Orders build() {
-        return Orders.createOf(menus, date);
+    public OrdersDto build() {
+        return new OrdersDto(menus, date);
     }
 }

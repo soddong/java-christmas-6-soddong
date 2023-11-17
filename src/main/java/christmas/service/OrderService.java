@@ -1,7 +1,7 @@
 package christmas.service;
 
 import christmas.domain.order.OrderMaker;
-import christmas.domain.order.Orders;
+import christmas.dto.OrdersDto;
 import christmas.view.InputManager;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +15,7 @@ public class OrderService {
         this.orderMaker = orderMaker;
     }
 
-    public Orders createOrder() {
+    public OrdersDto createOrder() {
         createDate();
         createMenu();
         return orderMaker.build();

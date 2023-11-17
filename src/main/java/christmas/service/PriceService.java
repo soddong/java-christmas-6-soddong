@@ -1,9 +1,9 @@
 package christmas.service;
 
-import christmas.domain.order.Orders;
 import christmas.domain.price.PriceCalculator;
 import christmas.domain.price.money.KoreaMoney;
 import christmas.domain.price.money.Money;
+import christmas.dto.OrdersDto;
 
 public class PriceService {
     private final PriceCalculator priceCalculator;
@@ -12,9 +12,9 @@ public class PriceService {
         this.priceCalculator = priceCalculator;
     }
 
-    public Money getOriginPrice(Orders orders) {
+    public Money getOriginPrice(OrdersDto ordersDto) {
         return KoreaMoney.from(
-                priceCalculator.calculateItemsPrice(orders.getOrders())
+                priceCalculator.calculateItemsPrice(ordersDto.getOrders())
         );
     }
 

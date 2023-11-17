@@ -2,7 +2,7 @@ package christmas.domain.event.policy.discount;
 
 import christmas.domain.calendar.DateChecker;
 import christmas.domain.event.EventCondition;
-import christmas.domain.order.Orders;
+import christmas.dto.OrdersDto;
 import java.time.LocalDate;
 
 public class DdayDiscountPolicy implements DiscountPolicy {
@@ -14,10 +14,10 @@ public class DdayDiscountPolicy implements DiscountPolicy {
     private LocalDate end = LocalDate.of(2023, 12, 25);
 
     @Override
-    public int calculateDiscountAmount(Orders orders) {
-        LocalDate orderDate = orders.getDate();
+    public int calculateDiscountAmount(OrdersDto ordersDto) {
+        LocalDate orderDate = ordersDto.getDate();
         if (!isValidForCondition(orderDate) ||
-                !EventCondition.isOrderPricesAboveThreshold(orders)) {
+                !EventCondition.isOrderPricesAboveThreshold(ordersDto)) {
             return 0;
         }
         return DAY_DISCOUNT_BASE + DAY_DISCOUNT_PER_DAY * (orderDate.getDayOfMonth() - start.getDayOfMonth());

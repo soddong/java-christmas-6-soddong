@@ -5,10 +5,10 @@ import static christmas.view.OutputPrinter.OUTPUT_TOTAL_PRICE_MESSAGE;
 import static christmas.view.OutputPrinter.OUTPUT_TOTAL_PROFIT_MESSAGE;
 
 import christmas.domain.event.Grade;
-import christmas.domain.order.Orders;
 import christmas.domain.price.money.KoreaMoney;
 import christmas.domain.price.money.Money;
-import christmas.dto.FoodItem;
+import christmas.dto.Item;
+import christmas.dto.OrdersDto;
 import christmas.service.EventService;
 import christmas.service.OrderService;
 import christmas.service.PriceService;
@@ -32,18 +32,18 @@ public class ReservationController {
     }
 
     public void reserve() {
-        Orders orders = orderService.createOrder();
-        OutputManager.displayOrder(orders);
+        OrdersDto ordersDto = orderService.createOrder();
+        OutputManager.displayOrder(ordersDto);
 
-        Money originPrice = priceService.getOriginPrice(orders);
+        Money originPrice = priceService.getOriginPrice(ordersDto);
         OutputManager.displayMoney(originPrice, OUTPUT_ORIGIN_PRICE_MESSAGE);
 
-        Optional<List<FoodItem>> gifts = eventService.receiveGift(orders);
+        Optional<List<Item>> gifts = eventService.receiveGift(ordersDto);
         gifts.ifPresent(OutputManager::displayGifts);
         Money giftPrice = gifts.map(eventService::getGiftProfits)
                 .orElse(KoreaMoney.none());
 
-        Money discountPrice = eventService.getDiscountProfits(orders);
+        Money discountPrice = eventService.getDiscountProfits(ordersDto);
         OutputManager.displayMoney(KoreaMoney.add(giftPrice, discountPrice), OUTPUT_TOTAL_PROFIT_MESSAGE);
 
         Money totaldPrice = priceService.getTotalPrice(originPrice, discountPrice);

@@ -6,9 +6,9 @@ import static christmas.view.OutputPrinter.newLine;
 import static christmas.view.OutputPrinter.printMessage;
 
 import christmas.domain.event.Grade;
-import christmas.domain.order.Orders;
 import christmas.domain.price.money.Money;
-import christmas.dto.FoodItem;
+import christmas.dto.Item;
+import christmas.dto.OrdersDto;
 import java.util.List;
 
 public class OutputManager {
@@ -18,21 +18,21 @@ public class OutputManager {
         printMessage(grade.name());
     }
 
-    public static void displayGifts(final List<FoodItem> gifts) {
+    public static void displayGifts(final List<Item> gifts) {
         newLine();
         printMessage(OUTPUT_GIFT_MESSAGE);
         if (gifts.isEmpty()) {
             printMessage("없음");
         }
-        for (FoodItem item : gifts) {
+        for (Item item : gifts) {
             printMessage(item.toString());
         }
     }
 
-    public static void displayOrder(final Orders orders) {
+    public static void displayOrder(final OrdersDto ordersDto) {
         newLine();
         printMessage(OUTPUT_ORDER_MESSAGE);
-        for (FoodItem item : orders.getOrders()) {
+        for (Item item : ordersDto.getOrders()) {
             printMessage(item.toString());
         }
     }

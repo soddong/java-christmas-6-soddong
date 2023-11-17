@@ -1,7 +1,7 @@
 //package christmas.domain.discount;
 //
-//import christmas.domain.event.food.FoodItem;
-//import christmas.domain.order.Orders;
+//import christmas.domain.event.food.Item;
+//import christmas.dto.OrdersDto;
 //import christmas.domain.event.policy.discount.DiscountPolicy;
 //import christmas.domain.event.policy.discount.SpecialDiscountPolicy;
 //import org.assertj.core.api.Assertions;
@@ -14,8 +14,8 @@
 //    @Test
 //    public void 스페셜데이_인경우_할인적용_() {
 //        // given
-//        Orders orders = new Orders(LocalDate.of(2023, 12, 25));
-//        FoodItem order1 = FoodItem.createItem("티본스테이크", "1");
+//        OrdersDto orders = new OrdersDto(LocalDate.of(2023, 12, 25));
+//        Item order1 = Item.createItem("티본스테이크", "1");
 //        // when
 //        orders.addOrder(order1);
 //        int discountedPrice = discountPolicy.calculateDiscountAmount(orders);

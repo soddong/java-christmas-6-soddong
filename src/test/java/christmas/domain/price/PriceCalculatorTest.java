@@ -1,7 +1,7 @@
 package christmas.domain.price;
 
-import christmas.domain.order.Orders;
-import christmas.dto.FoodItem;
+import christmas.dto.Item;
+import christmas.dto.OrdersDto;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,22 +14,22 @@ class PriceCalculatorTest {
 
     @Test
     void 테스트() {
-        List<FoodItem> orderList = new ArrayList<>();
-        FoodItem item = FoodItem.createItem("샴페인", "1");
+        List<Item> orderList = new ArrayList<>();
+        Item item = Item.createItem("샴페인", "1");
 //        Assertions.assertThat(item.menu().getPrice()).isEqualTo(25000);
         orderList.add(item);
-        Orders orders = Orders.createOf(orderList, LocalDate.of(2023, 12, 25));
-//        Assertions.assertThat(orders.getOrders()).containsExactly(item);
-        Assertions.assertThat(priceCalculator.receiveGifts(orders)).contains(item);
-//        int result = priceCalculator.calculateTotalGifts(priceCalculator.receiveGifts(orders));
+        OrdersDto ordersDto = OrdersDto.createOf(orderList, LocalDate.of(2023, 12, 25));
+//        Assertions.assertThat(ordersDto.getOrders()).containsExactly(item);
+        Assertions.assertThat(priceCalculator.receiveGifts(ordersDto)).contains(item);
+//        int result = priceCalculator.calculateTotalGifts(priceCalculator.receiveGifts(ordersDto));
 //        Assertions.assertThat(result).isEqualTo(25000);
     }
 
 //    @Test
 //    void calculateDiscountedPrice() {
 //        // given
-//        Orders orders = new Orders(LocalDate.of(2023, 12, 24)); // 월 & 23일 경과 & 스페셜데이
-//        orders.addOrder(FoodItem.createItem("초코케이크", "2"));
+//        OrdersDto orders = new OrdersDto(LocalDate.of(2023, 12, 24)); // 월 & 23일 경과 & 스페셜데이
+//        orders.addOrder(Item.createItem("초코케이크", "2"));
 //
 //        // when
 //        int discountedPrice = priceCalculator.calculateDiscountedPrice(orders);

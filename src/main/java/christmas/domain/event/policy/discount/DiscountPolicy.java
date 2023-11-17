@@ -1,17 +1,17 @@
 package christmas.domain.event.policy.discount;
 
-import christmas.domain.order.Orders;
+import christmas.dto.OrdersDto;
 import java.time.LocalDate;
 
 public interface DiscountPolicy {
     /**
      * 할인 금액을 계산합니다.
      *
-     * @param orders 주문 내역
+     * @param ordersDto 주문 내역
      *
      * @return 주문 내역에 해당되는 할인 금액을 리턴
      */
-    int calculateDiscountAmount(Orders orders);
+    int calculateDiscountAmount(OrdersDto ordersDto);
 
     /**
      * 해당 날짜가 할인조건에 해당되는 날인지 체크합니다.
