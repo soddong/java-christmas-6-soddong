@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 
+import christmas.domain.food.FoodItem;
 import org.junit.jupiter.api.Test;
 
 class FoodItemTest {

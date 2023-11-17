@@ -1,6 +1,6 @@
 package christmas.domain.order;
 
-import christmas.domain.FoodItem;
+import christmas.domain.food.FoodItem;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

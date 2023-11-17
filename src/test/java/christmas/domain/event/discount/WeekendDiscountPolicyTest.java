@@ -1,6 +1,6 @@
 //package christmas.domain.event.discount;
 //
-//import christmas.domain.FoodItem;
+//import christmas.domain.event.food.FoodItem;
 //import christmas.domain.order.Orders;
 //import christmas.domain.event.policy.discount.DiscountPolicy;
 //import christmas.domain.event.policy.discount.WeekendDiscountPolicy;

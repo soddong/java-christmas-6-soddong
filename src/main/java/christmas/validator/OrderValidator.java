@@ -3,12 +3,13 @@ package christmas.validator;
 import static christmas.validator.CommonValidator.validateNotEmpty;
 import static christmas.validator.CommonValidator.validateNumber;
 
-import christmas.domain.order.FoodCategory;
-import christmas.domain.order.Menu;
+import christmas.domain.food.FoodCategory;
+import christmas.domain.food.Menu;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+//TODO: 역할분리
 public class OrderValidator {
     private static final int MAX_ORDER_SIZE = 20;
     private final static String ORDER = "주문";

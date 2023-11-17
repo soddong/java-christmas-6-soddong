@@ -2,7 +2,7 @@
 //
 //import static org.assertj.core.api.Assertions.assertThat;
 //
-//import christmas.domain.FoodItem;
+//import christmas.domain.event.food.FoodItem;
 //import christmas.domain.order.Orders;
 //import christmas.domain.event.policy.gift.FoodGiftPolicy;
 //import org.junit.jupiter.api.Test;

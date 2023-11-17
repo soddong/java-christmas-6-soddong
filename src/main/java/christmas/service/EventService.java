@@ -1,6 +1,6 @@
 package christmas.service;
 
-import christmas.domain.FoodItem;
+import christmas.domain.food.FoodItem;
 import christmas.domain.order.Orders;
 import christmas.domain.price.PriceCalculator;
 import christmas.domain.price.money.KoreaMoney;
@@ -13,14 +13,20 @@ public class EventService {
     public EventService(PriceCalculator priceCalculator) {
         this.priceCalculator = priceCalculator;
     }
-    
+
     public List<FoodItem> receiveGift(Orders orders) {
         return priceCalculator.receiveGifts(orders);
     }
 
-    public Money getOriginPrice(Orders orders) {
+    public Money getGiftProfits(List<FoodItem> gifts) {
         return KoreaMoney.from(
-                priceCalculator.calculateOriginalPrice(orders)
+                priceCalculator.calculateTotalGifts(gifts)
+        );
+    }
+
+    public Money getDiscountProfits(Orders orders) {
+        return KoreaMoney.from(
+                priceCalculator.calculateTotalDiscount(orders)
         );
     }
 }

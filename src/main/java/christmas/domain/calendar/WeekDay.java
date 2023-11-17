@@ -16,13 +16,9 @@ public enum WeekDay {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public DayOfWeek getDayOfWeek() {
-        return this.dayOfWeek;
-    }
-
-    public static boolean isWeekDate(final DayOfWeek day) {
+    public static boolean isWeekDate(DayOfWeek day) {
         return Stream.of(WeekDay.values())
-                .anyMatch(weekDay -> weekDay.getDayOfWeek().equals(day));
+                .anyMatch(weekDay -> day.equals(weekDay.dayOfWeek));
     }
 }
 

@@ -1,11 +1,9 @@
 package christmas.service;
 
-import christmas.domain.FoodItem;
 import christmas.domain.order.Orders;
 import christmas.domain.price.PriceCalculator;
 import christmas.domain.price.money.KoreaMoney;
 import christmas.domain.price.money.Money;
-import java.util.List;
 
 public class PriceService {
     private final PriceCalculator priceCalculator;
@@ -14,20 +12,13 @@ public class PriceService {
         this.priceCalculator = priceCalculator;
     }
 
-    public Money getDiscountedPrice(Money originPrice, Money discountPrice) {
+    public Money getOriginPrice(Orders orders) {
+        return KoreaMoney.from(
+                priceCalculator.calculateOriginalPrice(orders)
+        );
+    }
+
+    public Money getTotalPrice(Money originPrice, Money discountPrice) {
         return KoreaMoney.sub(originPrice, discountPrice);
     }
-
-    public Money applyGift(List<FoodItem> gifts) {
-        return KoreaMoney.from(
-                priceCalculator.calculateTotalGifts(gifts)
-        );
-    }
-
-    public Money applyDiscount(Orders orders) {
-        return KoreaMoney.from(
-                priceCalculator.calculateTotalDiscount(orders)
-        );
-    }
-
 }

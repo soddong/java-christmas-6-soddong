@@ -2,6 +2,7 @@ package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import christmas.domain.food.FoodName;
 import org.junit.jupiter.api.Test;
 
 class FoodNameTest {

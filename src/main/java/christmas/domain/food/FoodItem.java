@@ -1,6 +1,4 @@
-package christmas.domain;
-
-import christmas.domain.order.Menu;
+package christmas.domain.food;
 
 public class FoodItem {
     private FoodName name;

@@ -17,12 +17,8 @@ public enum SpecialDay {
         this.date = LocalDate.of(year, month, day);
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public static boolean isSpecialDay(final LocalDate date) {
+    public static boolean isSpecialDay(LocalDate date) {
         return Stream.of(SpecialDay.values())
-                .anyMatch(specialDay -> specialDay.getDate().equals(date));
+                .anyMatch(specialDay -> date.equals(specialDay.date));
     }
 }

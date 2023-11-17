@@ -1,6 +1,6 @@
 package christmas.domain.event.policy;
 
-import christmas.domain.FoodItem;
+import christmas.domain.food.FoodItem;
 import christmas.domain.event.policy.discount.DdayDiscountPolicy;
 import christmas.domain.event.policy.discount.DiscountPolicy;
 import christmas.domain.event.policy.discount.SpecialDiscountPolicy;
@@ -27,7 +27,7 @@ public class PolicyManager {
     public Optional<List<GiftPolicy>> getActiveGiftPolicies() {
         List<GiftPolicy> giftPolicies = new ArrayList<>();
         giftPolicies.add(new FoodGiftPolicy(FoodItem.createItem("샴페인", "1")
-                ,THRESHOLD_OF_SHAMPAIN_GIFT));
+                , THRESHOLD_OF_SHAMPAIN_GIFT));
         return Optional.of(giftPolicies);
     }
 }

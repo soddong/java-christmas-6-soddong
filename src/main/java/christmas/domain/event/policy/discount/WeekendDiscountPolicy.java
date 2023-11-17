@@ -1,9 +1,9 @@
 package christmas.domain.event.policy.discount;
 
-import christmas.domain.FoodItem;
+import christmas.domain.food.FoodItem;
 import christmas.domain.calendar.Date;
 import christmas.domain.event.EventCondition;
-import christmas.domain.order.FoodCategory;
+import christmas.domain.food.FoodCategory;
 import christmas.domain.order.Orders;
 import java.time.LocalDate;
 
