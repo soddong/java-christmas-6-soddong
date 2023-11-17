@@ -15,7 +15,7 @@ public class DdayDiscountPolicy implements DiscountPolicy {
 
     @Override
     public int calculateDiscountAmount(OrdersDto ordersDto) {
-        LocalDate orderDate = ordersDto.getDate();
+        LocalDate orderDate = ordersDto.date();
         if (!isValidForCondition(orderDate) ||
                 !EventCondition.isOrderPricesAboveThreshold(ordersDto)) {
             return 0;

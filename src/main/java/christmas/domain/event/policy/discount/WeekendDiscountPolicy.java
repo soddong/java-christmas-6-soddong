@@ -4,7 +4,7 @@ import christmas.domain.calendar.DateChecker;
 import christmas.domain.event.EventCondition;
 import christmas.domain.food.FoodCategory;
 import christmas.domain.food.Menu;
-import christmas.dto.Item;
+import christmas.dto.ItemDto;
 import christmas.dto.OrdersDto;
 import java.time.LocalDate;
 
@@ -14,14 +14,14 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
 
     @Override
     public int calculateDiscountAmount(final OrdersDto ordersDto) {
-        LocalDate orderDate = ordersDto.getDate();
+        LocalDate orderDate = ordersDto.date();
         if (!isValidForCondition(orderDate) ||
                 !EventCondition.isOrderPricesAboveThreshold(ordersDto)) {
             return 0;
         }
-        int count = ordersDto.getOrders().stream()
+        int count = ordersDto.orders().stream()
                 .filter(order -> Menu.from(order.getName()).getCategory() == FoodCategory.MAINDISH)
-                .mapToInt(Item::getQuantity)
+                .mapToInt(ItemDto::getQuantity)
                 .sum();
         return count * 2023;
     }

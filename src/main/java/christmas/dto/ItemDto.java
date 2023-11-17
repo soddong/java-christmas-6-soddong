@@ -3,17 +3,17 @@ package christmas.dto;
 import christmas.domain.food.FoodName;
 import christmas.domain.food.Quantity;
 
-public class Item {
+public class ItemDto {
     private FoodName name;
     private Quantity count;
 
-    public Item(FoodName name, Quantity count) {
+    public ItemDto(FoodName name, Quantity count) {
         this.name = name;
         this.count = count;
     }
 
-    public static Item createItem(String name, String count) {
-        return new Item(
+    public static ItemDto createItem(String name, String count) {
+        return new ItemDto(
                 FoodName.from(name),
                 Quantity.from(count)
         );

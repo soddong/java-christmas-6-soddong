@@ -4,7 +4,7 @@ import christmas.domain.calendar.DateChecker;
 import christmas.domain.event.EventCondition;
 import christmas.domain.food.FoodCategory;
 import christmas.domain.food.Menu;
-import christmas.dto.Item;
+import christmas.dto.ItemDto;
 import christmas.dto.OrdersDto;
 import java.time.LocalDate;
 
@@ -21,7 +21,7 @@ public class WeekdaysDiscountPolicy implements DiscountPolicy {
         }
         int count = ordersDto.orders().stream()
                 .filter(order -> Menu.from(order.getName()).getCategory() == FoodCategory.DESSERT)
-                .mapToInt(Item::getQuantity)
+                .mapToInt(ItemDto::getQuantity)
                 .sum();
         return count * 2023;
     }

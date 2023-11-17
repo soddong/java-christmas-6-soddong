@@ -6,7 +6,7 @@ import christmas.domain.event.policy.gift.GiftPolicy;
 import christmas.domain.price.PriceCalculator;
 import christmas.domain.price.money.KoreaMoney;
 import christmas.domain.price.money.Money;
-import christmas.dto.Item;
+import christmas.dto.ItemDto;
 import christmas.dto.OrdersDto;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +21,12 @@ public class EventService {
         this.policyManager = policyManager;
     }
 
-    public Optional<List<Item>> receiveGift(OrdersDto ordersDto) {
-        List<Item> giftItems = new ArrayList<>();
+    public Optional<List<ItemDto>> receiveGift(OrdersDto ordersDto) {
+        List<ItemDto> giftItemDtos = new ArrayList<>();
         for (GiftPolicy policy : policyManager.getActiveGiftPolicies()) {
-            policy.receiveGift(ordersDto).ifPresent(giftItems::add);
+            policy.receiveGift(ordersDto).ifPresent(giftItemDtos::add);
         }
-        return Optional.of(giftItems);
+        return Optional.of(giftItemDtos);
     }
 
     public Money getDiscountProfits(OrdersDto ordersDto) {
@@ -37,7 +37,7 @@ public class EventService {
         return profits;
     }
 
-    public Money getGiftProfits(List<Item> gifts) {
+    public Money getGiftProfits(List<ItemDto> gifts) {
         return KoreaMoney.from(
                 priceCalculator.calculateItemsPrice(gifts)
         );

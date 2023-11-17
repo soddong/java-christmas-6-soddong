@@ -16,8 +16,8 @@
 //    @Test
 //    void 주문을_추가한다() {
 //        // given
-//        Item order1 = Item.createItem(main, count);
-//        Item order2 = Item.createItem(drink, count);
+//        ItemDto order1 = ItemDto.createItem(main, count);
+//        ItemDto order2 = ItemDto.createItem(drink, count);
 //
 //        // when & then
 //        assertDoesNotThrow(() -> orders.addOrder(order1));
@@ -29,8 +29,8 @@
 //    void 최대주문_가능항목을_초과하면_예외가_발생한다() {
 //        // given
 //        String overCount = "11";
-//        Item order = Item.createItem(main, overCount);
-//        Item order2 = Item.createItem(main, overCount);
+//        ItemDto order = ItemDto.createItem(main, overCount);
+//        ItemDto order2 = ItemDto.createItem(main, overCount);
 //        // when
 //        orders.addOrder(order);
 //        // then
@@ -41,7 +41,7 @@
 //    @Test
 //    void 음료만_주문했을때는_예외가_발생한다() {
 //        // when
-//        Item drinkOrder = Item.createItem(drink, count);
+//        ItemDto drinkOrder = ItemDto.createItem(drink, count);
 //        // then
 //        assertThrows(IllegalArgumentException.class, () -> orders.addOrder(drinkOrder));
 //    }

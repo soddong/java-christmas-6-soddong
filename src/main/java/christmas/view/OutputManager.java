@@ -7,7 +7,7 @@ import static christmas.view.OutputPrinter.printMessage;
 
 import christmas.domain.event.Grade;
 import christmas.domain.price.money.Money;
-import christmas.dto.Item;
+import christmas.dto.ItemDto;
 import christmas.dto.OrdersDto;
 import java.util.List;
 
@@ -18,22 +18,22 @@ public class OutputManager {
         printMessage(grade.name());
     }
 
-    public static void displayGifts(final List<Item> gifts) {
+    public static void displayGifts(final List<ItemDto> gifts) {
         newLine();
         printMessage(OUTPUT_GIFT_MESSAGE);
         if (gifts.isEmpty()) {
             printMessage("없음");
         }
-        for (Item item : gifts) {
-            printMessage(item.toString());
+        for (ItemDto itemDto : gifts) {
+            printMessage(itemDto.toString());
         }
     }
 
     public static void displayOrder(final OrdersDto ordersDto) {
         newLine();
         printMessage(OUTPUT_ORDER_MESSAGE);
-        for (Item item : ordersDto.getOrders()) {
-            printMessage(item.toString());
+        for (ItemDto itemDto : ordersDto.orders()) {
+            printMessage(itemDto.toString());
         }
     }
 

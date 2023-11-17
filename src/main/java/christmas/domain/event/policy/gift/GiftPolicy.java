@@ -1,6 +1,6 @@
 package christmas.domain.event.policy.gift;
 
-import christmas.dto.Item;
+import christmas.dto.ItemDto;
 import christmas.dto.OrdersDto;
 import java.util.Optional;
 
@@ -12,7 +12,7 @@ public interface GiftPolicy {
      *
      * @return 주문 내역에 해당되는 증정품을 리턴
      */
-    Optional<Item> receiveGift(OrdersDto ordersDto);
+    Optional<ItemDto> receiveGift(OrdersDto ordersDto);
 
     /**
      * 증정품을 받을수 있는 조건에 충족하는지 확인합니다.

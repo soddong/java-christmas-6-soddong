@@ -1,6 +1,6 @@
 //package christmas.domain.event.discount;
 //
-//import christmas.domain.event.food.Item;
+//import christmas.domain.event.food.ItemDto;
 //import christmas.dto.OrdersDto;
 //import christmas.domain.event.policy.discount.DdayDiscountPolicy;
 //import christmas.domain.event.policy.discount.DiscountPolicy;
@@ -11,14 +11,14 @@
 //import java.time.LocalDate;
 //
 //class DdayDiscountPolicyTest {
-//    Item order1;
-//    Item order2;
+//    ItemDto order1;
+//    ItemDto order2;
 //    DiscountPolicy discountPolicy;
 //
 //    @BeforeEach
 //    void setUp() {
-//        order1 = Item.createItem("양송이스프", "1");
-//        order2 = Item.createItem("제로콜라", "1");
+//        order1 = ItemDto.createItem("양송이스프", "1");
+//        order2 = ItemDto.createItem("제로콜라", "1");
 //    }
 //
 //    // 조건에 해당되는 경우, 할인율을 계산하고 맞는지 확인

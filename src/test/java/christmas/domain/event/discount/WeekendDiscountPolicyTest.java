@@ -1,6 +1,6 @@
 //package christmas.domain.event.discount;
 //
-//import christmas.domain.event.food.Item;
+//import christmas.domain.event.food.ItemDto;
 //import christmas.dto.OrdersDto;
 //import christmas.domain.event.policy.discount.DiscountPolicy;
 //import christmas.domain.event.policy.discount.WeekendDiscountPolicy;
@@ -16,7 +16,7 @@
 //    public void 주말이고_디저트구매시_할인적용_() {
 //        // given
 //        OrdersDto orders = new OrdersDto(LocalDate.of(2023, 12, 2));  // 토요일
-//        Item order1 = Item.createItem("티본스테이크", "1");
+//        ItemDto order1 = ItemDto.createItem("티본스테이크", "1");
 //        // when
 //        orders.addOrder(order1);
 //        // when

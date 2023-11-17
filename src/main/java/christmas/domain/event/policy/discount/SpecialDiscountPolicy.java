@@ -9,7 +9,7 @@ public class SpecialDiscountPolicy implements DiscountPolicy {
 
     @Override
     public int calculateDiscountAmount(final OrdersDto ordersDto) {
-        LocalDate orderDate = ordersDto.getDate();
+        LocalDate orderDate = ordersDto.date();
         if (!isValidForCondition(orderDate) ||
                 !EventCondition.isOrderPricesAboveThreshold(ordersDto)) {
             return 0;

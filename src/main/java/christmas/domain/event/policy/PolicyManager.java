@@ -7,7 +7,7 @@ import christmas.domain.event.policy.discount.WeekdaysDiscountPolicy;
 import christmas.domain.event.policy.discount.WeekendDiscountPolicy;
 import christmas.domain.event.policy.gift.FoodGiftPolicy;
 import christmas.domain.event.policy.gift.GiftPolicy;
-import christmas.dto.Item;
+import christmas.dto.ItemDto;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class PolicyManager {
 
     public List<GiftPolicy> getActiveGiftPolicies() {
         List<GiftPolicy> giftPolicies = new ArrayList<>();
-        giftPolicies.add(new FoodGiftPolicy(Item.createItem("샴페인", "1")
+        giftPolicies.add(new FoodGiftPolicy(ItemDto.createItem("샴페인", "1")
                 , THRESHOLD_OF_SHAMPAIN_GIFT));
         return giftPolicies;
     }
