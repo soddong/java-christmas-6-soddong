@@ -15,11 +15,11 @@ public class OrdersMaker {
     private LocalDate date;
     private List<ItemDto> menus;
 
-    public void selectDate(int day) {
+    public void selectDate(final int day) {
         this.date = LocalDate.of(2023, 12, day);
     }
 
-    public void selectMenu(List<String> menus) {
+    public void selectMenu(final List<String> menus) {
         validateOrders(menus.stream()
                 .map(menu -> menu.split("-")[0])
                 .collect(Collectors.toList()));

@@ -5,16 +5,16 @@ public class KoreaMoney extends Money {
         super(money);
     }
 
-    public static KoreaMoney from(int money) {
+    public static KoreaMoney from(final int money) {
         validate(money);
         return new KoreaMoney(money);
     }
 
-    public static KoreaMoney sub(Money base, Money comparison) {
+    public static KoreaMoney sub(final Money base, final Money comparison) {
         return new KoreaMoney(base.money - comparison.money);
     }
 
-    public static Money add(Money base, Money comparison) {
+    public static Money add(final Money base, final Money comparison) {
         return new KoreaMoney(base.money + comparison.money);
     }
 

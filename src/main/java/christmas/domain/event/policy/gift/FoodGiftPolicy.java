@@ -6,8 +6,8 @@ import christmas.dto.OrdersDto;
 import java.util.Optional;
 
 public class FoodGiftPolicy implements GiftPolicy {
-    private ItemDto gift;
-    private long threshold;
+    private final ItemDto gift;
+    private final long threshold;
 
     public FoodGiftPolicy(ItemDto itemDto, long threshold) {
         this.gift = itemDto;
@@ -15,7 +15,7 @@ public class FoodGiftPolicy implements GiftPolicy {
     }
 
     @Override
-    public Optional<ItemDto> receiveGift(OrdersDto ordersDto) {
+    public Optional<ItemDto> receiveGift(final OrdersDto ordersDto) {
         if (isValidForCondition(ordersDto)) {
             return Optional.of(gift);
         }
@@ -23,7 +23,7 @@ public class FoodGiftPolicy implements GiftPolicy {
     }
 
     @Override
-    public boolean isValidForCondition(OrdersDto ordersDto) {
+    public boolean isValidForCondition(final OrdersDto ordersDto) {
         return EventCondition.isOrderPricesAboveThreshold(ordersDto, threshold);
     }
 }

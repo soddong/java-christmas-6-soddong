@@ -12,13 +12,13 @@ public class PriceService {
         this.priceCalculator = priceCalculator;
     }
 
-    public Money getOriginPrice(OrdersDto ordersDto) {
+    public Money getOriginPrice(final OrdersDto ordersDto) {
         return KoreaMoney.from(
                 priceCalculator.calculateItemsPrice(ordersDto.orders())
         );
     }
 
-    public Money getTotalPrice(Money originPrice, Money discountPrice) {
+    public Money getTotalPrice(final Money originPrice, final Money discountPrice) {
         return KoreaMoney.sub(originPrice, discountPrice);
     }
 }

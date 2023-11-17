@@ -21,7 +21,7 @@ public class EventService {
         this.policyManager = policyManager;
     }
 
-    public Optional<List<ItemDto>> receiveGift(OrdersDto ordersDto) {
+    public Optional<List<ItemDto>> receiveGift(final OrdersDto ordersDto) {
         List<ItemDto> giftItemDtos = new ArrayList<>();
         for (GiftPolicy policy : policyManager.getActiveGiftPolicies()) {
             policy.receiveGift(ordersDto).ifPresent(giftItemDtos::add);
@@ -29,7 +29,7 @@ public class EventService {
         return Optional.of(giftItemDtos);
     }
 
-    public Money getDiscountProfits(OrdersDto ordersDto) {
+    public Money getDiscountProfits(final OrdersDto ordersDto) {
         Money profits = KoreaMoney.none();
         for (DiscountPolicy policy : policyManager.getActiveDiscountPolicies()) {
             KoreaMoney.add(profits, KoreaMoney.from(policy.calculateDiscountAmount(ordersDto)));
@@ -37,7 +37,7 @@ public class EventService {
         return profits;
     }
 
-    public Money getGiftProfits(List<ItemDto> gifts) {
+    public Money getGiftProfits(final List<ItemDto> gifts) {
         return KoreaMoney.from(
                 priceCalculator.calculateItemsPrice(gifts)
         );

@@ -22,12 +22,12 @@ public enum Menu {
     private final FoodCategory category;
     private final int price;
 
-    private Menu(FoodCategory category, int price) {
+    Menu(FoodCategory category, int price) {
         this.category = category;
         this.price = price;
     }
 
-    public static Menu from(FoodName name) {
+    public static Menu from(final FoodName name) {
         return Menu.valueOf(name.getName());
     }
 
