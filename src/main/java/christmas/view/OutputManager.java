@@ -5,10 +5,10 @@ import static christmas.view.OutputPrinter.OUTPUT_ORDER_MESSAGE;
 import static christmas.view.OutputPrinter.newLine;
 import static christmas.view.OutputPrinter.printMessage;
 
-import christmas.domain.food.FoodItem;
 import christmas.domain.event.Grade;
 import christmas.domain.order.Orders;
 import christmas.domain.price.money.Money;
+import christmas.dto.FoodItem;
 import java.util.List;
 
 public class OutputManager {

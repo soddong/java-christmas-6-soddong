@@ -2,9 +2,9 @@ package christmas.domain.order;
 
 import static christmas.validator.OrderValidator.validateOrders;
 
-import christmas.domain.food.FoodItem;
 import christmas.domain.food.FoodName;
 import christmas.domain.food.Quantity;
+import christmas.dto.FoodItem;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package christmas.domain.price;
 
-import christmas.domain.food.FoodItem;
 import christmas.domain.order.Orders;
+import christmas.dto.FoodItem;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

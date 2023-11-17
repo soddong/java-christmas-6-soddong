@@ -1,7 +1,7 @@
 package christmas.domain.event.policy.gift;
 
-import christmas.domain.food.FoodItem;
 import christmas.domain.order.Orders;
+import christmas.dto.FoodItem;
 import java.util.Optional;
 
 public interface GiftPolicy {

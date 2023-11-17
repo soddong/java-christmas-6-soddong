@@ -3,10 +3,10 @@ package christmas.domain.calendar;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-public class Date {
+public class DateChecker {
     private LocalDate dateToCheck;
 
-    public Date(LocalDate dateToCheck) {
+    public DateChecker(LocalDate dateToCheck) {
         this.dateToCheck = dateToCheck;
     }
 

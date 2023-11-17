@@ -7,7 +7,7 @@ import christmas.domain.event.policy.discount.WeekdaysDiscountPolicy;
 import christmas.domain.event.policy.discount.WeekendDiscountPolicy;
 import christmas.domain.event.policy.gift.FoodGiftPolicy;
 import christmas.domain.event.policy.gift.GiftPolicy;
-import christmas.domain.food.FoodItem;
+import christmas.dto.FoodItem;
 import java.util.ArrayList;
 import java.util.List;
 

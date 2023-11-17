@@ -1,4 +1,7 @@
-package christmas.domain.food;
+package christmas.dto;
+
+import christmas.domain.food.FoodName;
+import christmas.domain.food.Quantity;
 
 public class FoodItem {
     private FoodName name;
@@ -10,23 +13,14 @@ public class FoodItem {
     }
 
     public static FoodItem createItem(String name, String count) {
-        validate(name);
         return new FoodItem(
                 FoodName.from(name),
                 Quantity.from(count)
         );
     }
 
-    private static void validate(String name) {
-        try {
-            Menu.valueOf(name);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public Menu menu() {
-        return Menu.valueOf(name.getName());
+    public FoodName getName() {
+        return name;
     }
 
     public int getQuantity() {

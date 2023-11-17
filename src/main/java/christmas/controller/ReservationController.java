@@ -5,10 +5,10 @@ import static christmas.view.OutputPrinter.OUTPUT_TOTAL_PRICE_MESSAGE;
 import static christmas.view.OutputPrinter.OUTPUT_TOTAL_PROFIT_MESSAGE;
 
 import christmas.domain.event.Grade;
-import christmas.domain.food.FoodItem;
 import christmas.domain.order.Orders;
 import christmas.domain.price.money.KoreaMoney;
 import christmas.domain.price.money.Money;
+import christmas.dto.FoodItem;
 import christmas.service.EventService;
 import christmas.service.OrderService;
 import christmas.service.PriceService;

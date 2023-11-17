@@ -1,14 +1,14 @@
 package christmas.domain.calendar;
 
-import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-class DateTest {
-    Date checker = new Date(LocalDate.of(2023, 12, 10)); // 일요일
-    Date specialDay = new Date(LocalDate.of(2023, 12, 25)); // 일요일
+import java.time.LocalDate;
+import org.junit.jupiter.api.Test;
+
+class DateCheckerTest {
+    DateChecker checker = new DateChecker(LocalDate.of(2023, 12, 10)); // 일요일
+    DateChecker specialDay = new DateChecker(LocalDate.of(2023, 12, 25)); // 일요일
+
     @Test
     void 날짜_범위안에_드는지_판단할수_있다() {
         // when & then

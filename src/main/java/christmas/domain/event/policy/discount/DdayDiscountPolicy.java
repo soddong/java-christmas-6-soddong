@@ -1,6 +1,6 @@
 package christmas.domain.event.policy.discount;
 
-import christmas.domain.calendar.Date;
+import christmas.domain.calendar.DateChecker;
 import christmas.domain.event.EventCondition;
 import christmas.domain.order.Orders;
 import java.time.LocalDate;
@@ -25,7 +25,7 @@ public class DdayDiscountPolicy implements DiscountPolicy {
 
     @Override
     public boolean isValidForCondition(LocalDate date) {
-        Date dayChecker = new Date(date);
+        DateChecker dayChecker = new DateChecker(date);
         return dayChecker.isBetweenRange(start, end);
     }
 }
