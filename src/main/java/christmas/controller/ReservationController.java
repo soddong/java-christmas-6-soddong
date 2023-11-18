@@ -33,6 +33,7 @@ public class ReservationController {
 
     public void reserve() {
         OrdersDto ordersDto = orderService.createOrder();
+        OutputManager.displayDate(ordersDto.date());
         OutputManager.displayOrder(ordersDto);
 
         Money originPrice = priceService.getOriginPrice(ordersDto);
@@ -42,12 +43,14 @@ public class ReservationController {
         gifts.ifPresent(OutputManager::displayGifts);
         Money giftPrice = gifts.map(eventService::getGiftProfits)
                 .orElse(KoreaMoney.none());
-
         Money discountPrice = eventService.getDiscountProfits(ordersDto);
+
+        Optional<List<String>> profits = eventService.getDetailProfits();
+        profits.ifPresent(OutputManager::displayDetailProfits);
         OutputManager.displayMoney(KoreaMoney.add(giftPrice, discountPrice), OUTPUT_TOTAL_PROFIT_MESSAGE);
 
-        Money totaldPrice = priceService.getTotalPrice(originPrice, discountPrice);
-        OutputManager.displayMoney(totaldPrice, OUTPUT_TOTAL_PRICE_MESSAGE);
+        Money totalPrice = priceService.getTotalPrice(originPrice, discountPrice);
+        OutputManager.displayMoney(totalPrice, OUTPUT_TOTAL_PRICE_MESSAGE);
 
         Grade grade = rateService.determineGrade(KoreaMoney.add(giftPrice, discountPrice));
         OutputManager.displayGrade(grade);

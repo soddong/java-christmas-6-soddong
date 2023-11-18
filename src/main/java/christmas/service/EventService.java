@@ -13,11 +13,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class EventService {
-    private final PriceCalculator priceCalculator;
     private final PolicyManager policyManager;
 
-    public EventService(PriceCalculator priceCalculator, PolicyManager policyManager) {
-        this.priceCalculator = priceCalculator;
+    public EventService(PolicyManager policyManager) {
         this.policyManager = policyManager;
     }
 
@@ -32,14 +30,25 @@ public class EventService {
     public Money getDiscountProfits(final OrdersDto ordersDto) {
         Money profits = KoreaMoney.none();
         for (DiscountPolicy policy : policyManager.getActiveDiscountPolicies()) {
-            KoreaMoney.add(profits, KoreaMoney.from(policy.calculateDiscountAmount(ordersDto)));
+            profits = KoreaMoney.add(profits, KoreaMoney.from(policy.calculateDiscountAmount(ordersDto)));
         }
         return profits;
     }
 
     public Money getGiftProfits(final List<ItemDto> gifts) {
         return KoreaMoney.from(
-                priceCalculator.calculateItemsPrice(gifts)
+                PriceCalculator.calculateItemsPrice(gifts)
         );
+    }
+
+    public Optional<List<String>> getDetailProfits() {
+        List<String> details = new ArrayList<>();
+        for (DiscountPolicy policy : policyManager.getActiveDiscountPolicies()) {
+            details.add(policy.toString());
+        }
+        for (GiftPolicy policy : policyManager.getActiveGiftPolicies()) {
+            details.add(policy.toString());
+        }
+        return Optional.of(details);
     }
 }

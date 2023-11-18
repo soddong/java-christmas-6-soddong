@@ -14,19 +14,27 @@ import java.util.List;
 public class PolicyManager {
     private static final int THRESHOLD_OF_SHAMPAIN_GIFT = 120_000;
 
-    public List<DiscountPolicy> getActiveDiscountPolicies() {
-        List<DiscountPolicy> discountPolicies = new ArrayList<>();
+    private List<DiscountPolicy> discountPolicies = new ArrayList<>();
+    List<GiftPolicy> giftPolicies = new ArrayList<>();
+
+    public PolicyManager() {
+        initialze();
+    }
+
+    private void initialze() {
         discountPolicies.add(new DdayDiscountPolicy());
         discountPolicies.add(new WeekdaysDiscountPolicy());
         discountPolicies.add(new WeekendDiscountPolicy());
         discountPolicies.add(new SpecialDiscountPolicy());
+        giftPolicies.add(new FoodGiftPolicy(ItemDto.createItem("샴페인", "1")
+                , THRESHOLD_OF_SHAMPAIN_GIFT));
+    }
+
+    public List<DiscountPolicy> getActiveDiscountPolicies() {
         return discountPolicies;
     }
 
     public List<GiftPolicy> getActiveGiftPolicies() {
-        List<GiftPolicy> giftPolicies = new ArrayList<>();
-        giftPolicies.add(new FoodGiftPolicy(ItemDto.createItem("샴페인", "1")
-                , THRESHOLD_OF_SHAMPAIN_GIFT));
         return giftPolicies;
     }
 }

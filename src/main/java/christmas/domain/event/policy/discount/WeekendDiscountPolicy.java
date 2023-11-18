@@ -9,8 +9,13 @@ import christmas.dto.OrdersDto;
 import java.time.LocalDate;
 
 public class WeekendDiscountPolicy implements DiscountPolicy {
-    private LocalDate start = LocalDate.of(2023, 12, 1);
-    private LocalDate end = LocalDate.of(2023, 12, 31);
+    public static final int WEEKEND_DISCOUNT_PER_MAINDISH = 2023;
+
+    private final LocalDate start = LocalDate.of(2023, 12, 1);
+    private final LocalDate end = LocalDate.of(2023, 12, 31);
+
+    private int discountAmount = 0;
+
 
     @Override
     public int calculateDiscountAmount(final OrdersDto ordersDto) {
@@ -23,12 +28,18 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
                 .filter(order -> Menu.from(order.getName()).getCategory() == FoodCategory.MAINDISH)
                 .mapToInt(ItemDto::getQuantity)
                 .sum();
-        return count * 2023;
+        discountAmount = count * WEEKEND_DISCOUNT_PER_MAINDISH;
+        return discountAmount;
     }
 
     @Override
     public boolean isValidForCondition(LocalDate date) {
         DateChecker dayChecker = new DateChecker(date);
         return dayChecker.isBetweenRange(start, end) && !dayChecker.isWeekDay();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("주말 할인: -%,d원", discountAmount);
     }
 }

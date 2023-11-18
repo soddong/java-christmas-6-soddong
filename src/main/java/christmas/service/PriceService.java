@@ -6,15 +6,9 @@ import christmas.domain.price.money.Money;
 import christmas.dto.OrdersDto;
 
 public class PriceService {
-    private final PriceCalculator priceCalculator;
-
-    public PriceService(PriceCalculator priceCalculator) {
-        this.priceCalculator = priceCalculator;
-    }
-
     public Money getOriginPrice(final OrdersDto ordersDto) {
         return KoreaMoney.from(
-                priceCalculator.calculateItemsPrice(ordersDto.orders())
+                PriceCalculator.calculateItemsPrice(ordersDto.orders())
         );
     }
 

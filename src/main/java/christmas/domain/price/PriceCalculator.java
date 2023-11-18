@@ -5,9 +5,13 @@ import christmas.dto.ItemDto;
 import java.util.List;
 
 public class PriceCalculator {
-    public int calculateItemsPrice(final List<ItemDto> itemDtos) {
+    public static int calculateItemsPrice(final List<ItemDto> itemDtos) {
         return itemDtos.stream()
-                .mapToInt(item -> Menu.from(item.getName()).getPrice() * item.getQuantity())
+                .mapToInt(PriceCalculator::calculateItemPrice)
                 .sum();
+    }
+
+    public static int calculateItemPrice(final ItemDto item) {
+        return Menu.from(item.getName()).getPrice() * item.getQuantity();
     }
 }

@@ -1,6 +1,7 @@
 package christmas.domain.event.policy.gift;
 
 import christmas.domain.event.EventCondition;
+import christmas.domain.price.PriceCalculator;
 import christmas.dto.ItemDto;
 import christmas.dto.OrdersDto;
 import java.util.Optional;
@@ -25,5 +26,10 @@ public class FoodGiftPolicy implements GiftPolicy {
     @Override
     public boolean isValidForCondition(final OrdersDto ordersDto) {
         return EventCondition.isOrderPricesAboveThreshold(ordersDto, threshold);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("증정 이벤트: -%,d원", PriceCalculator.calculateItemPrice(gift));
     }
 }
