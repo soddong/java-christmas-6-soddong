@@ -2,7 +2,6 @@ package christmas.controller;
 
 import static christmas.view.OutputPrinter.OUTPUT_ORIGIN_PRICE_MESSAGE;
 import static christmas.view.OutputPrinter.OUTPUT_TOTAL_PRICE_MESSAGE;
-import static christmas.view.OutputPrinter.OUTPUT_TOTAL_PROFIT_MESSAGE;
 
 import christmas.domain.event.Grade;
 import christmas.domain.price.money.KoreaMoney;
@@ -37,7 +36,7 @@ public class ReservationController {
         OutputManager.displayOrder(ordersDto);
 
         Money originPrice = priceService.getOriginPrice(ordersDto);
-        OutputManager.displayMoney(originPrice, OUTPUT_ORIGIN_PRICE_MESSAGE);
+        OutputManager.displayPrice(originPrice, OUTPUT_ORIGIN_PRICE_MESSAGE);
 
         Optional<List<ItemDto>> gifts = eventService.receiveGift(ordersDto);
         gifts.ifPresent(OutputManager::displayGifts);
@@ -47,10 +46,10 @@ public class ReservationController {
 
         Optional<List<String>> profits = eventService.getDetailProfits();
         profits.ifPresent(OutputManager::displayDetailProfits);
-        OutputManager.displayMoney(KoreaMoney.add(giftPrice, discountPrice), OUTPUT_TOTAL_PROFIT_MESSAGE);
+        OutputManager.displayProfit(KoreaMoney.add(giftPrice, discountPrice));
 
         Money totalPrice = priceService.getTotalPrice(originPrice, discountPrice);
-        OutputManager.displayMoney(totalPrice, OUTPUT_TOTAL_PRICE_MESSAGE);
+        OutputManager.displayPrice(totalPrice, OUTPUT_TOTAL_PRICE_MESSAGE);
 
         Grade grade = rateService.determineGrade(KoreaMoney.add(giftPrice, discountPrice));
         OutputManager.displayGrade(grade);

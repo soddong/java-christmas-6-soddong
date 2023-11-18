@@ -3,6 +3,7 @@ package christmas.view;
 import static christmas.view.OutputPrinter.OUTPUT_DETAIL_PROFIT_MESSAGE;
 import static christmas.view.OutputPrinter.OUTPUT_GIFT_MESSAGE;
 import static christmas.view.OutputPrinter.OUTPUT_ORDER_MESSAGE;
+import static christmas.view.OutputPrinter.OUTPUT_TOTAL_PROFIT_MESSAGE;
 import static christmas.view.OutputPrinter.introFormat;
 import static christmas.view.OutputPrinter.newLine;
 import static christmas.view.OutputPrinter.printMessage;
@@ -40,7 +41,13 @@ public class OutputManager {
         }
     }
 
-    public static void displayMoney(final Money price, final String message) {
+    public static void displayProfit(final Money price) {
+        newLine();
+        printMessage(OUTPUT_TOTAL_PROFIT_MESSAGE);
+        printMessage(String.format("-%s", price.toString()));
+    }
+
+    public static void displayPrice(final Money price, final String message) {
         newLine();
         printMessage(message);
         printMessage(String.format("%s", price.toString()));
